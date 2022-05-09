@@ -1,4 +1,4 @@
-# Cinema Wave
+# **Cinema Wave**
 
 # Project Context
 
