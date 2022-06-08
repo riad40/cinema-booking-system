@@ -21,17 +21,19 @@ body {
     color: var(--bg-color);
 }
 section {
-    padding: 4.5rem 0 1.5rem;
+    padding: 40px 0 20px;
 }
 header {
     width: 100%;
-    padding: 20px 20px;
+    padding: 10px 20px;
 }
 .navbar {
     display: flex;
     position: relative;
     justify-content: space-between;
     align-items: center;
+    width: 90%;
+    margin: 0 auto;
 }
 .brand-title {
     display: flex;
@@ -319,5 +321,81 @@ header {
     .social-links {
         margin: 0;
         padding: 0;
+    }
+}
+/* ====== movie detail ======= */
+.movie-details {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 90%;
+    margin: 0 auto;
+    border: 2px solid var(--main-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+.cover img {
+    width: 300px;
+}
+.informations {
+    padding: 0 20px;
+    min-width: 40%;
+    text-align: center;
+}
+.informations h1,
+.movie-story h1 {
+    font-family: var(--text-type);
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--main-color);
+    padding: 0 0 20px;
+}
+.movie-story p {
+    font-family: var(--text-type);
+}
+.specific-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+}
+.specific-details :nth-child(1) {
+    font-family: var(--text-type);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--main-color);
+}
+.specific-details :nth-child(2) {
+    padding: 0 10px;
+}
+.book-ticket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0;
+}
+.triler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0 0;   
+}
+@media (max-width: 1140px) {
+    .movie-details {
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 763px) {
+    .movie-details {
+        align-items: center;
+        flex-direction: column;
+    }
+    .informations {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    .movie-story h1 {
+        padding: 10px 0;
+        text-align: center;
     }
 }
