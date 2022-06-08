@@ -3,11 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/dist/output.css" rel="stylesheet">
+    <link href="./assets/css/styles.css" rel="stylesheet">
+    <!--Link Box Icon's Css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <title>Cinema Wave</title>
 </head>
 <body>
-    <h1 class="text-3xl font-bold underline">
-        Hello world!
-    </h1>
+    <!-- navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="brand-title">
+                <i class='bx bxs-camera-movie' ></i>
+                <a href="./index.html">Cinema Wave</a>
+            </div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#Movies">Movies</a></li>
+                    <li><a href="#Log In">Log In</a></li>
+                    <li><a href="#Register">Rrgister</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Home section-->
+    <section class="home swiper" id="home">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide container">
+                <img src="./assets/images/home1.jpg" alt="name of the movie">
+                <div class="home-text">
+                    <span>Marvel Universe</span>
+                    <h1>Venom: Let There <br/> Be Carnage</h1>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            <div class="swiper-slide container">
+                <img src="./assets/images/home2.jpg" alt="name of the movie">
+                <div class="home-text">
+                    <span>Marvel Universe</span>
+                    <h1>Venom: Let There <br/> Be Carnage</h1>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+            <div class="swiper-slide container">
+                <img src="./assets/images/home3.jpg" alt="name of the movie">
+                <div class="home-text">
+                    <span>Marvel Universe</span>
+                    <h1>Venom: Let There <br/> Be Carnage</h1>
+                    <a href="#" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
+    <!-- movies section -->
+    <section>
+        <h2 class="heading">Playing This Week</h2>
+        <div class="movies-container">
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="./assets/images/m1.jpg" alt="m1">
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+        </div>
+    </section>
+    <!-- contact us section -->
+    <section class="contact-section">
+        <h2 class="heading">Contact Us</h2>
+        <div class="contact-container">
+            <form method="post">
+                <label for="full-name">Full Name</label>
+                <input type="text" name="fname" id="full-name" placeholder="Write Your Full Name">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Write Your Email">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" placeholder="Write Your Message"></textarea>
+                <input type="submit" name="submit-contact-us" id="submit-contact-us" value="Submit">
+            </form>
+        </div>
+    </section>
+    <!-- footer -->
+    <footer class="main-footer">
+        <div class="text-footer">
+            <div class="text-child-footer">
+                <h1 class="footer-heading">Cinema Wave</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nemo, at fugiat hic consequatur quidem eaque, eos dolor provident, praesentium repellat libero animi eligendi sunt voluptates suscipit pariatur recusandae? Nostrum?</p>
+                <a href="#movies" class="footer-button">Book A Ticket Now</a>
+            </div>
+            <div class="social-links">
+                <h1 class="footer-heading">Fell Free To Reach Us</h1>
+                <ul>
+                    <li>contact.cinema@wave.com</li>
+                    <li>+212652-025819</li>
+                    <li>Post office street, Ouarzazate 45000</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy 2022 Made with love by Riad
+        </div>
+    </footer>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
