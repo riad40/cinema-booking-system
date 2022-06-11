@@ -12,7 +12,7 @@
 }
 :root {
     --main-color: #41CD7D;
-    --text-color: #020307;
+    --text-color: rgb(51, 56, 90);
     --bg-color: #fff;
     --text-type: 'Source Sans Pro', sans-serif;
 }
@@ -26,6 +26,7 @@ section {
 header {
     width: 100%;
     padding: 10px 20px;
+    background: #020307;
 }
 .navbar {
     display: flex;
@@ -54,7 +55,7 @@ header {
 }
 .navbar-links li a {
     display: block;
-    color: white;
+    color: var(--bg-color);
     padding: 1rem;
 }
 .toggle-button {
@@ -212,7 +213,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #172b4d;
+    background-color: #020307;
 }
 .text-footer {
     width: 100%;
@@ -335,14 +336,22 @@ header {
 }
 .cover img {
     width: 300px;
+    height: 100%;
+    object-fit: cover;
 }
 .informations {
     padding: 0 20px;
     min-width: 40%;
     text-align: center;
 }
+.movie-triler video{
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+}
 .informations h1,
-.movie-story h1 {
+.movie-story h1,
+.movie-triler h1 {
     font-family: var(--text-type);
     font-size: 30px;
     font-weight: 500;
@@ -373,11 +382,9 @@ header {
     align-items: center;
     padding: 50px 0 0;
 }
-.triler {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 0 0;   
+.triler video {
+    width: 100%;
+    height: 100%;
 }
 @media (max-width: 1140px) {
     .movie-details {
@@ -398,4 +405,138 @@ header {
         padding: 10px 0;
         text-align: center;
     }
+}
+/* ====== reserve page ======= */
+.reserve-seats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1000px;
+}
+.movie-selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.movie-selected h1,
+.movie-selected h2,
+.movie-selected h3 {
+    font-family: var(--text-type);
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--main-color);
+    padding: 10px 20px;
+}
+.screen {
+    width: 50%;
+    height: 300px;
+    background: var(--bg-color);
+    margin: 10px auto;
+    box-shadow: 0px 3px 10px var(--main-color);
+    border-radius: 5px;
+    transform: rotateX(-45deg);
+}
+.seats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.seat-row-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    border: 5px solid var(--main-color);
+    padding: 5px 10px;
+    border-radius: 100%;
+    color: #007aff;
+    margin-right: 20px;
+}
+.seat-number {
+    font-size: 15px;
+    font-weight: 400;
+    border: 2px solid var(--bg-color);
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 100%;
+    color: var(--main-color);
+    cursor: pointer;
+}
+.all-seats {
+    display: flex;
+    flex-direction: column;
+}
+.fix {
+    padding: 5px 6px;
+}
+@media (max-width:930px) {
+    .seats {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+    .seat-row-name {
+        margin: 0 0 10px;
+    }
+    .seat-number {
+        margin: 5px 0;
+    }
+    .all-seats {
+        flex-direction: row;
+        margin: 0 auto;
+    }
+}
+@media (max-width:570px) {
+    .movie-selected {
+        flex-direction: column;
+    }
+}
+/* ====== profile page ======= */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+.profile-image {
+    width: 200px;
+    height: 50%;
+    background-color: rgb(12, 14, 26);
+    padding: 5px;
+}
+.profile-image img {
+    width: 200px;
+    height:200px;
+    border-radius: 50%;
+    padding: 25px;
+    object-fit: cover;
+
+}
+.profile-details {
+    padding: 7px;
+    background-color: rgb(37, 38, 48);
+}   
+.profile-details h1,
+.profile-details h2,
+.profile-details h3 {
+    font-family: var(--text-type);
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--main-color);
+    padding: 10px;
+} 
+.reservation-container {
+    width: 100%;
+    padding: 2.5rem 0;
+}
+.reservation-container table {
+    width: 70%;
+    margin: 0 auto;
 }
