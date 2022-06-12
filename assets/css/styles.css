@@ -137,7 +137,16 @@ header {
     font-weight: 400;
     border-radius: 0.5rem;
 }
-
+.gggg {
+    margin-top: 10px;
+}
+.gggg a {
+    margin: 0 auto;
+    display: block;
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+    text-align: center;
+}
 .heading {
     max-width: 90%;
     margin: 0 auto;
@@ -155,17 +164,22 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(180px, auto));
     gap: 1rem;
     margin-top: 2rem;
+    position: relative;
 }
 
 .box .box-img {
     width: 100%;
     height: 270px;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .box .box-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: -1;
 }
 
 .box h3 {
@@ -203,7 +217,9 @@ header {
 }
 
 .contact-container form input[type=text],
-.contact-container form input[type=email] {
+.contact-container form input[type=email], 
+.contact-container form input[type=number],
+.contact-container form input[type=date] {
     display: block;
     width: 100%;
     padding: 10px 5px;
@@ -233,7 +249,6 @@ header {
 .contact-container form input[type=submit] {
     display: block;
     padding: 10px;
-    width: 100px;
     background: var(--main-color);
     border-radius: 5px;
     color: var(--bg-color);
@@ -317,6 +332,7 @@ header {
     font-family: var(--text-type);
     font-size: 18px;
     font-weight: 400;
+    color: var(--bg-color);
 }
 
 .copyright {
@@ -792,7 +808,7 @@ nav .sidebar-button i {
     margin-bottom: 26px;
 }
 
-.overview-boxes .box {
+.overview-boxes .boxi {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -808,7 +824,7 @@ nav .sidebar-button i {
     font-weight: 500;
 }
 
-.home-content .box .number {
+.home-content .boxi .number {
     display: inline-block;
     font-size: 35px;
     margin-top: -6px;
@@ -947,4 +963,7 @@ nav .sidebar-button i {
     border-radius: 5px;
     margin: 20px 0 0 10px;
     padding: 10px 20px;
+}
+.none {
+    display: none;
 }

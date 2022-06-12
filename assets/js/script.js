@@ -21,3 +21,22 @@ const navbarLinks = document.getElementsByClassName('navbar-links')[0]
 toggleButton.addEventListener('click', () => {
   navbarLinks.classList.toggle('active')
 })
+
+/* ===== for reserve page ===== */
+// console.log('js running');
+const seats = document.querySelectorAll('#seat')
+
+seats.forEach(seat => {
+    seat.addEventListener('click', () => {
+        // console.log('clicked')
+        seat.style.backgroundColor = 'blue'
+    })
+})
+
+const getTickets = document.querySelector('#getTicket')
+const payment = document.querySelector('#payment')
+
+getTickets.addEventListener('click', () => {
+    payment.classList.remove('none')
+    payment.classList.add('animate__animated', 'animate__bounceInLeft')
+})
