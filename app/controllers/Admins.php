@@ -92,6 +92,20 @@
             }
             $this->view('admins/customers');
         }
+        // add movie
+        public function add_movie() {
+            if (!isset($_SESSION['admin_id'])) {
+                header('Location: ' . URLROOT . '/admins');
+            }
+            $this->view('admins/add_movie');
+        }
+        // update movie
+        public function update_movie() {
+            if (!isset($_SESSION['admin_id'])) {
+                header('Location: ' . URLROOT . '/admins');
+            }
+            $this->view('admins/update_movie');
+        }
         // admin logout
         public function logout() {
             // unset session variables

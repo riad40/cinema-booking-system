@@ -220,6 +220,7 @@ header {
 .contact-container form input[type=email], 
 .contact-container form input[type=number],
 .contact-container form input[type=date],
+.contact-container form input[type=datetime-local],
 .contact-container form input[type=password] {
     display: block;
     width: 100%;
@@ -657,7 +658,8 @@ header {
     color: var(--main-color);
     padding: 10px;
 }
-#update_profile {
+#update_profile,
+#add-movie {
     margin-top: 10px;
 }
 .reservation-container {
@@ -772,8 +774,7 @@ header {
     background: var(--bg-color);
     display: flex;
     align-items: center;
-    position: fixed;
-    width: calc(100% - 240px);
+    width: 100%;
     left: 240px;
     z-index: 100;
     padding: 0 20px;

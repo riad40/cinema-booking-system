@@ -50,6 +50,7 @@
                 <div class="profile-details">
                     <span class="admin_name">Hi, Admin</span>
                 </div>
+                <a href="add_movie" class="footer-button">Add New Movie</a>
             </nav>                   
                     
             <!-- Section -->
@@ -89,7 +90,7 @@
                             <p>55 MAD</p>
                         </div>
                         <div class="book-ticket" style="padding: 0;">
-                            <a href="#EditMovie" class="footer-button">Edit Movie</a>
+                            <a href="update_movie" class="footer-button">Edit Movie</a>
                             <a href="#DeleteMovie" class="footer-button">Delete Movie</a>
                         </div>
                     </div>
