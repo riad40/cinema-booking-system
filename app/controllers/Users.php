@@ -166,11 +166,89 @@
         }
 
         public function profile() {
-            $this->view('users/profile');
+            // Check if logged in
+            if (!isset($_SESSION['user_id'])) {
+                header('Location: ' . URLROOT . '/users/login');
+            }
+            $user = $this->userModel->getUserById($_SESSION['user_id']);
+            $data = [
+                'title' => 'Profile',
+                'user' => $user
+            ];
+            $this->view('users/profile', $data);
         }
 
         public function edit_profile() {
-            $this->view('users/edit_profile');
+            // Check if logged in
+            if (!isset($_SESSION['user_id'])) {
+                header('Location: ' . URLROOT . '/users/login');
+            }
+            $user = $this->userModel->getUserById($_SESSION['user_id']);
+            $data = [
+                'title' => 'Edit Profile',
+                'user' => $user
+            ];
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'title' => 'Update Profile',
+                    'fname' => trim($_POST['fname']),
+                    'email' => trim($_POST['email']),
+                    'phone' => trim($_POST['phone']),
+                    'pwd' => trim($_POST['pwd']),
+                    'id' => $_SESSION['user_id'],
+                    'fname_err' => '',
+                    'email_err' => '',
+                    'phone_err' => '',
+                    'pwd_err' => ''
+                ];
+
+                // validate name
+                if(empty($data['fname'])) {
+                    $data['fname_err'] = 'Please enter your full name';
+                }
+                // validate email
+                if(empty($data['email'])) {
+                    $data['email_err'] = 'Please enter your email';
+                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['email_err'] = 'Please enter a valid email';
+                } elseif ($this->userModel->findUserByEmail($data['email']) == true) {
+                    $data['email_err'] = 'Email already exists';
+                }   
+                // validate phone
+                if(empty($data['phone'])) {
+                    $data['phone_err'] = 'Please enter your phone number';
+                }
+                // validate password
+                if(!empty($data['pwd'])) {
+                    if (strlen($data['pwd']) < 6) {
+                        $data['pwd_err'] = 'Password must be at least 6 characters';
+                    }
+                }
+                // make sure errors are empty
+                if (empty($data['fname_err']) && empty($data['email_err']) && empty($data['phone_err']) && empty($data['pwd_err'])) {
+                    // hash password
+                    $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
+                    // register user from model
+                    if ($this->userModel->updateUser($data)) {
+                        header('Location: ' . URLROOT . '/users/profile');
+                    } else {
+                        die('Something went wrong');
+                    }
+                }
+            } else {
+                $data = [
+                    'title' => 'Update Profile',
+                    'user' => $user,
+                    'fname_err' => '',
+                    'email_err' => '',
+                    'phone_err' => '',
+                    'pwd_err' => ''
+                ];
+            }
+            $this->view('users/edit_profile', $data);
         }
         
     }

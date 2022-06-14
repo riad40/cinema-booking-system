@@ -16,9 +16,9 @@
                     <img src="<?php echo URLROOT ?>/public/assets/images/profile.jpg" alt="">
                 </div>
                 <div class="profile-details">
-                    <h1><?php echo $_SESSION['user_fname']; ?></h1>
-                    <h2><?php echo $_SESSION['user_email']; ?></h2>
-                    <h3><?php echo $_SESSION['user_phone']; ?></h3>
+                    <h1><?php echo $data['user']->user_fname; ?></h1>
+                    <h2><?php echo $data['user']->user_email; ?></h2>
+                    <h3><?php echo $data['user']->user_phone; ?></h3>
                 </div>
             </div>
             <a href="./edit_profile" class="heading">Edit Profile</a>

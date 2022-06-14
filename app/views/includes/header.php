@@ -27,7 +27,7 @@
         $link1 = '';
         $title2 = '';
         $link2 = '';
-        if(basename($_SERVER['REQUEST_URI']) == 'reserve' || basename($_SERVER['REQUEST_URI']) == 'profile') {
+        if(basename($_SERVER['REQUEST_URI']) == 'reserve' || basename($_SERVER['REQUEST_URI']) == 'profile' || basename($_SERVER['REQUEST_URI']) == 'edit_profile') {
             $title1 = 'Profile';
             $link1 = '../users/profile';
             $title2 = 'Logout';
