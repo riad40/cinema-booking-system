@@ -198,12 +198,33 @@
                     'email' => trim($_POST['email']),
                     'phone' => trim($_POST['phone']),
                     'pwd' => trim($_POST['pwd']),
+                    'image' => $_FILES['profile-image']['name'],
+                    'temp_image' => $_FILES['profile-image']['tmp_name'],
+                    'folder' => 'C:/Users/Youcode/Desktop/xampp/htdocs/cinema-wave/public/assets/images/' . $_FILES['profile-image']['name'],
                     'id' => $_SESSION['user_id'],
+                    'image_err' => '',
                     'fname_err' => '',
                     'email_err' => '',
                     'phone_err' => '',
                     'pwd_err' => ''
                 ];
+
+                // image validation
+                if (!empty($data['image'])) {
+                    $image_ext = explode('.', $data['image']);
+                } else {
+                    $image_ext = explode('.', $user->user_image);
+                }
+                $allowed_ext = ['jpg', 'jpeg', 'png'];
+                if (!in_array(strtolower(end($image_ext)), $allowed_ext)) {
+                    $data['image_err'] = 'Please upload a valid image';
+                }
+                // upload image
+                if (!empty($data['image'])) {
+                    if (!move_uploaded_file($data['temp_image'], $data['folder'])) {
+                        $data['image_err'] = 'Something went wrong';
+                    }
+                }
 
                 // validate name
                 if(empty($data['fname'])) {
@@ -228,7 +249,7 @@
                     }
                 }
                 // make sure errors are empty
-                if (empty($data['fname_err']) && empty($data['email_err']) && empty($data['phone_err']) && empty($data['pwd_err'])) {
+                if (empty($data['fname_err']) && empty($data['email_err']) && empty($data['phone_err']) && empty($data['pwd_err']) && empty($data['image_err'])) {
                     // hash password
                     $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
                     // register user from model
@@ -242,6 +263,7 @@
                 $data = [
                     'title' => 'Update Profile',
                     'user' => $user,
+                    'image_err' => '',
                     'fname_err' => '',
                     'email_err' => '',
                     'phone_err' => '',

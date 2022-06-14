@@ -58,11 +58,12 @@
         }
         // update user
         public function updateUser($data) {
-            $this->db->query('UPDATE users SET user_fname = :fname, user_email = :email, user_phone = :phone, user_password = :pwd WHERE user_id = :id');
+            $this->db->query('UPDATE users SET user_fname = :fname, user_email = :email, user_phone = :phone, user_password = :pwd, user_image = :img WHERE user_id = :id');
             $this->db->bind(':fname', $data['fname']);
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':phone', $data['phone']);
             $this->db->bind(':pwd', $data['pwd']);
+            $this->db->bind(':img', $data['image']);
             $this->db->bind(':id', $data['id']);
 
             // execute query

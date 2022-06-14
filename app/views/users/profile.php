@@ -13,7 +13,7 @@
         <div class="profile-container">
             <div class="profile-info">
                 <div class="profile-image">
-                    <img src="<?php echo URLROOT ?>/public/assets/images/profile.jpg" alt="">
+                    <img src="<?= URLROOT . '/public/assets/images/' . $data['user']->user_image; ?>" alt="">
                 </div>
                 <div class="profile-details">
                     <h1><?php echo $data['user']->user_fname; ?></h1>

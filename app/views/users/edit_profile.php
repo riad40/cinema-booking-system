@@ -8,7 +8,7 @@
     <section class="contact-section" id="Contact">
         <h2 class="heading">Update Your Profile</h2>
         <div class="contact-container">
-            <form action="<?php echo URLROOT ?>/users/edit_profile" method="post">
+            <form action="<?php echo URLROOT ?>/users/edit_profile" method="post" enctype="multipart/form-data" >
                 <label for="profile-image">Profile Picture</label>
                 <div class="file-input">
                     <input type="file" name="profile-image" id="profile-image">
