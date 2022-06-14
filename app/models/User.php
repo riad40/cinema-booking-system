@@ -9,6 +9,7 @@
         public function findUserByEmail($email) {
             $this->db->query('SELECT user_email FROM users WHERE user_email = :email');
             $this->db->bind(':email', $email);
+            $this->db->execute();
 
             if ($this->db->rowCount() > 0) {
                 return true;

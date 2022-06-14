@@ -117,9 +117,11 @@
                 // validate email
                 if(empty($data['email'])) {
                     $data['email_err'] = 'Please enter your email';
-                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                }
+                if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                     $data['email_err'] = 'Please enter a valid email';
-                } elseif ($this->userModel->findUserByEmail($data['email']) == true) {
+                }
+                if ($this->userModel->findUserByEmail($data['email']) == true) {
                     $data['email_err'] = 'Email already exists';
                 }   
                 // validate phone
@@ -145,7 +147,8 @@
                     $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
                     // register user from model
                     if ($this->userModel->register($data)) {
-                        header('Location: ' . URLROOT . '/users/login');
+                        // header('Location: ' . URLROOT . '/users/login');
+                        echo('User registered');
                     } else {
                         die('Something went wrong');
                     }

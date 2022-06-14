@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="log_out">
-                    <a href="#">
+                    <a href="logout">
                         <i class="bx bx-log-out"></i>
                         <span class="links_name">Log out</span>
                     </a>
@@ -48,22 +48,22 @@
                     <span class="dashboard">Dashboard</span>
                 </div>
                 <div class="profile-details">
-                    <span class="admin_name">Hi, Admin</span>
+                    <span class="admin_name">Hi, <?= $data['admin']->admin_fname ?></span>
                 </div>
             </nav>
 
             <div class="home-content">
                 <div class="overview-boxes">
                     <div class="boxi">
-                        <div class="right-side">
+                        <div class="right-side" style="text-align: center;">
                             <div class="box-topic">Total Movies</div>
-                            <div class="number">40,876</div>
+                            <div class="number">38,876</div>
                         </div>
                     </div>
                     <div class="boxi">
-                        <div class="right-side">
+                        <div class="right-side" style="text-align: center;">
                             <div class="box-topic">Total Customers</div>
-                            <div class="number">38,876</div>
+                            <div class="number"><?= $data['user_count']->c?></div>
                         </div>
                     </div>
                 </div>
