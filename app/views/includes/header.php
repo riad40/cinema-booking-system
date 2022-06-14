@@ -32,11 +32,16 @@
             $link1 = '../users/profile';
             $title2 = 'Logout';
             $link2 = '../users/logout';
+        } else if(basename($_SERVER['REQUEST_URI']) == 'cinema-wave') {
+            $title1 = 'Register';
+            $link1 = 'users/register';
+            $title2 = 'Login';
+            $link2 = 'users/login';
         } else {
             $title1 = 'Login';
-            $link1 = 'users/login';
+            $link1 = '../users/login';
             $title2 = 'Register';
-            $link2 = 'users/register';
+            $link2 = '../users/register';
         }
     ?>
     <!-- navbar -->

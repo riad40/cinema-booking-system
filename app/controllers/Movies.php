@@ -3,10 +3,10 @@
     class Movies extends Controller {
         
         public function __construct() {
-            // parent::__construct();
+            $this->movieModel = $this->model('Movie');
         }
         
-        public function index() {
+        public function movie_detail() {
             $this->view('movies/movie_detail');
         }
         

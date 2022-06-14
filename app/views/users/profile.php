@@ -16,12 +16,12 @@
                     <img src="<?php echo URLROOT ?>/public/assets/images/profile.jpg" alt="">
                 </div>
                 <div class="profile-details">
-                    <h1>John Doe</h1>
-                    <h2>john.doe@gmail.com</h2>
-                    <h3>+966 544 544 544</h3>
+                    <h1><?php echo $_SESSION['user_fname']; ?></h1>
+                    <h2><?php echo $_SESSION['user_email']; ?></h2>
+                    <h3><?php echo $_SESSION['user_phone']; ?></h3>
                 </div>
             </div>
-            <a href="#editprofile" class="heading">Edit Profile</a>
+            <a href="./edit_profile" class="heading">Edit Profile</a>
         </div>
         <h2 class="heading">Reservation History</h2>
         <div class="reservation-container">
