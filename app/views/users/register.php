@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./assets/css/register.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/register.css">
     <title>Register</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
             </ul> 
             <div class="flex flex-col items-center py-3 options">
                 <span>Already have an account ?</span>
-                <a href="./login.html" class="text-xl">sign in</a>
+                <a href="./login" class="text-xl">sign in</a>
             </div>
         </div>
     </div>

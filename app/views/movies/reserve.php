@@ -1,40 +1,8 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./assets/css/styles.css" rel="stylesheet">
-    <!--Link Box Icon's Css-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <!-- Link animate css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <title>Cinema Wave</title>
-</head>
-<body>
-    <!-- navbar -->
-    <header>
-        <nav class="navbar">
-            <div class="brand-title">
-                <i class='bx bxs-camera-movie' ></i>
-                <a href="./index.html">Cinema Wave</a>
-            </div>
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="#Movies">Movies</a></li>
-                    <li><a href="./profile.html">My Profile</a></li>
-                    <li><a href="#Log out">Log out</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <?php
+        // include header
+        include_once '../app/views/includes/header.php';
+    ?>
+
     <!-- reserve section -->
     <section style="width: 100%;">
         <h2 class="heading">Select The perfect view For you</h2>
@@ -160,28 +128,7 @@
             </form>
     </section>
     <!-- footer -->
-    <footer class="main-footer">
-        <div class="text-footer">
-            <div class="text-child-footer">
-                <h1 class="footer-heading">Cinema Wave</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nemo, at fugiat hic consequatur quidem eaque, eos dolor provident, praesentium repellat libero animi eligendi sunt voluptates suscipit pariatur recusandae? Nostrum?</p>
-                <a href="#movies" class="footer-button">Book A Ticket Now</a>
-            </div>
-            <div class="social-links">
-                <h1 class="footer-heading">Fell Free To Reach Us</h1>
-                <ul>
-                    <li>contact.cinema@wave.com</li>
-                    <li>+212652-025819</li>
-                    <li>Post office street, Ouarzazate 45000</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy 2022 Made with love by Riad
-        </div>
-    </footer>
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-</body>
-</html>
+    <?php
+        // include footer
+        include_once '../app/views/includes/footer.php';
+    ?>

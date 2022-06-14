@@ -1,43 +1,12 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./assets/css/styles.css" rel="stylesheet">
-    <!--Link Box Icon's Css-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <title>Cinema Wave</title>
-</head>
-<body>
-    <!-- navbar -->
-    <header>
-        <nav class="navbar">
-            <div class="brand-title">
-                <i class='bx bxs-camera-movie' ></i>
-                <a href="./index.html">Cinema Wave</a>
-            </div>
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="#Movies">Movies</a></li>
-                    <li><a href="./login.html">Log In</a></li>
-                    <li><a href="./register.html">Rrgister</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <?php
+        // include header
+        include_once '../app/views/includes/header.php';
+    ?>
     <!-- Section -->
     <section class="details">
         <div class="movie-details">
             <div class="cover">
-                <img src="./assets/images/m3.jpg" alt="name of the movie">
+                <img src="<?php echo URLROOT ?>/public/assets/images/m3.jpg" alt="name of the movie">
             </div>
             <div class="informations">
                 <h1>Movie Title</h1>
@@ -70,14 +39,14 @@
                     <p>55 MAD</p>
                 </div>
                 <div class="book-ticket">
-                    <a href="./reserve.html" class="footer-button">Buy a Ticket</a>
+                    <a href="reserve" class="footer-button">Buy a Ticket</a>
                 </div>
             </div>
             <div>
                 <div class="movie-triler">
                     <h1>Movie Triler</h1>
                     <video controls>
-                        <source src="./assets/trailers/trailler.mp4" type="video/mp4">
+                        <source src="<?php echo URLROOT ?>/public/assets/trailers/trailler.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="movie-story">
@@ -96,70 +65,70 @@
         <div class="movies-container">
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
             </div>
             <div class="box">
                 <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+                    <img src="<?php echo URLROOT ?>/public/assets/images/m1.jpg" alt="m1">
                 </div>
                 <h3>Venom</h3>
                 <span>120 min | Action</span>
@@ -167,28 +136,7 @@
         </div>
     </section>
     <!-- footer -->
-    <footer class="main-footer">
-        <div class="text-footer">
-            <div class="text-child-footer">
-                <h1 class="footer-heading">Cinema Wave</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nemo, at fugiat hic consequatur quidem eaque, eos dolor provident, praesentium repellat libero animi eligendi sunt voluptates suscipit pariatur recusandae? Nostrum?</p>
-                <a href="#movies" class="footer-button">Book A Ticket Now</a>
-            </div>
-            <div class="social-links">
-                <h1 class="footer-heading">Fell Free To Reach Us</h1>
-                <ul>
-                    <li>contact.cinema@wave.com</li>
-                    <li>+212652-025819</li>
-                    <li>Post office street, Ouarzazate 45000</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy 2022 Made with love by Riad
-        </div>
-    </footer>
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-</body>
-</html>
+    <?php
+        // include footer
+        include_once '../app/views/includes/footer.php';
+    ?>

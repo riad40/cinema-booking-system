@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./assets/css/register.css">
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/public/assets/css/register.css">
         <script src="https://cdn.tailwindcss.com"></script>
         <title>Sign In</title>
     </head>
@@ -30,7 +30,7 @@
                 </ul> 
                 <div class="flex flex-col items-center py-3 options">
                     <span>Don't have an account ?</span>
-                    <a href="./register.html" class="text-xl">sign up</a>
+                    <a href="register" class="text-xl">sign up</a>
                 </div>
             </div>
         </div>
