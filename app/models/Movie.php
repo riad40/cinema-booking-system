@@ -63,5 +63,17 @@
                 return false;
             }
         }
+        // delete movie
+        public function deleteMovie($id) {
+            $this->db->query('DELETE FROM movies WHERE movie_id = :id');
+            // Bind values
+            $this->db->bind(':id', $id);
+            // Execute
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         
     }

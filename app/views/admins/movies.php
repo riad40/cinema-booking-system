@@ -95,7 +95,7 @@
                         </div>
                         <div class="book-ticket" style="padding: 0;">
                             <a href="update_movie/<?= $c->movie_id ?>" class="footer-button">Edit Movie</a>
-                            <a href="#DeleteMovie" class="footer-button">Delete Movie</a>
+                            <a href="delete_movie/<?= $c->movie_id ?>" class="footer-button">Delete Movie</a>
                         </div>
                     </div>
                     <div>

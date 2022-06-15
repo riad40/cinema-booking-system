@@ -367,6 +367,26 @@
                 }
             }
         }
+        // delete movie
+        public function delete_movie($id){
+            $movie = $this->movieModel->getMovieById($id);
+            $data = [
+                'movie' => $movie,
+                'id' => $movie->movie_id
+            ];
+            $id = $data['id'];
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                if ($this->movieModel->deleteMovie($id)) {
+                    // echo 'Movie deleted';
+                    // js redirect to movies
+                    echo '<script>
+                            window.location.href = "http://localhost/cinema-wave/admins/movies";
+                         </script>';
+                } else {
+                    die('Something went wrong');
+                }
+            }
+        }
         // admin logout
         public function logout() {
             // unset session variables
