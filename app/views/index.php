@@ -6,30 +6,16 @@
     <!-- Home section-->
     <section class="home swiper" id="home">
         <div class="swiper-wrapper">
+        <?php foreach($data['movies'] as $movie) { ?>
             <div class="swiper-slide container">
-                <img src="./assets/images/home1.jpg" alt="name of the movie">
+                <img src="<?= URLROOT . '/public/assets/images/' . $movie->movie_cover; ?>" alt="name of the movie">
                 <div class="home-text">
-                    <span>Marvel Universe</span>
-                    <h1>Venom: Let There <br/> Be Carnage</h1>
+                    <span><?= $movie->movie_title ?></span>
+                    <h1><?= $movie->movie_type ?><br/><?= $movie->movie_playing_date ?></h1>
                     <a href="<?php echo URLROOT ?>/movies/movie_detail" class="btn">Book Now</a>
                 </div>
             </div>
-            <div class="swiper-slide container">
-                <img src="./assets/images/home2.jpg" alt="name of the movie">
-                <div class="home-text">
-                    <span>Marvel Universe</span>
-                    <h1>Venom: Let There <br/> Be Carnage</h1>
-                    <a href="<?php echo URLROOT ?>/movies/movie_detail" class="btn">Book Now</a>
-                </div>
-            </div>
-            <div class="swiper-slide container">
-                <img src="./assets/images/home3.jpg" alt="name of the movie">
-                <div class="home-text">
-                    <span>Marvel Universe</span>
-                    <h1>Venom: Let There <br/> Be Carnage</h1>
-                    <a href="<?php echo URLROOT ?>/movies/movie_detail" class="btn">Book Now</a>
-                </div>
-            </div>
+        <?php } ?>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -39,85 +25,20 @@
     <section id="Movies">
         <h2 class="heading">Playing This Week</h2>
         <div class="movies-container">
-            <div class="box" id="movie-box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
+            <?php foreach($data['movies'] as $movie) { ?>
+                <div class="box" id="movie-box">
+                    <div class="box-img">
+                        <img src="<?= URLROOT . '/public/assets/images/' . $movie->movie_cover; ?>" alt="m1">
+                    </div>
+                    <h3><?= $movie->movie_title ?></h3>
+                    <span><?= $movie->movie_duration ?> | <?= $movie->movie_type ?></span>
+                    <div class="gggg">
+                        <a href="<?php echo URLROOT ?>/movies/movie_detail" style="display: none;" class="" id="bookNow">Book Now</a>
+                    </div>
                 </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-                <div class="gggg">
-                    <a href="<?php echo URLROOT ?>/movies/movie_detail" style="display: none;" class="" id="bookNow">Book Now</a>
-                </div>
-            </div>
-            <div class="box" id="movie-box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-                <div class="gggg">
-                    <a href="<?php echo URLROOT ?>/movies/movie_detail" style="display: none;" class="" id="bookNow">Book Now</a>
-                </div>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
-            <div class="box">
-                <div class="box-img">
-                    <img src="./assets/images/m1.jpg" alt="m1">
-                </div>
-                <h3>Venom</h3>
-                <span>120 min | Action</span>
-            </div>
+            <?php } ?>
         </div>
-    </section>
+    </section>  
     <!-- contact us section -->
     <section class="contact-section" id="Contact">
         <h2 class="heading">Contact Us</h2>
