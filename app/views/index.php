@@ -12,7 +12,7 @@
                 <div class="home-text">
                     <span><?= $movie->movie_title ?></span>
                     <h1><?= $movie->movie_type ?><br/><?= $movie->movie_playing_date ?></h1>
-                    <a href="<?php echo URLROOT ?>/movies/movie_detail" class="btn">Book Now</a>
+                    <a href="<?php echo URLROOT ?>/movies/movie_detail/<?= $movie->movie_id ?>" class="btn">Book Now</a>
                 </div>
             </div>
         <?php } ?>
@@ -33,7 +33,7 @@
                     <h3><?= $movie->movie_title ?></h3>
                     <span><?= $movie->movie_duration ?> | <?= $movie->movie_type ?></span>
                     <div class="gggg">
-                        <a href="<?php echo URLROOT ?>/movies/movie_detail" style="display: none;" class="" id="bookNow">Book Now</a>
+                        <a href="<?php echo URLROOT ?>/movies/movie_detail/<?= $movie->movie_id ?>" id="bookNow">Book Now</a>
                     </div>
                 </div>
             <?php } ?>
