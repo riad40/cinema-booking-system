@@ -75,6 +75,7 @@
                 'admin' => $admin,
             ];
             $data['user_count'] = $this->adminModel->getUserCount();
+            $data['movie_count'] = $this->movieModel->getMovieCount();
             $this->view('admins/dashboard', $data);
         }
 

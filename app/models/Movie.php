@@ -75,5 +75,11 @@
                 return false;
             }
         }
+        // count all movies
+        public function getMovieCount() {
+            $this->db->query('SELECT COUNT(*) AS c FROM movies');
+            $row = $this->db->single();
+            return $row;
+        }
         
     }

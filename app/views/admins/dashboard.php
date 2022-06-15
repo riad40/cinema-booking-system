@@ -57,7 +57,7 @@
                     <div class="boxi">
                         <div class="right-side" style="text-align: center;">
                             <div class="box-topic">Total Movies</div>
-                            <div class="number">38,876</div>
+                            <div class="number"><?= $data['movie_count']->c ?></div>
                         </div>
                     </div>
                     <div class="boxi">

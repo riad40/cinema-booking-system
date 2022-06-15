@@ -3,7 +3,7 @@
             <div class="text-child-footer">
                 <h1 class="footer-heading">Cinema Wave</h1>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nemo, at fugiat hic consequatur quidem eaque, eos dolor provident, praesentium repellat libero animi eligendi sunt voluptates suscipit pariatur recusandae? Nostrum?</p>
-                <a href="#movies" class="footer-button">Book A Ticket Now</a>
+                <a href="<?= URLROOT ?>#Movies" class="footer-button">Book A Ticket Now</a>
             </div>
             <div class="social-links">
                 <h1 class="footer-heading">Fell Free To Reach Us</h1>
