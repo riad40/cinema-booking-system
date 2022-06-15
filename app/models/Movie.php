@@ -42,7 +42,7 @@
         }
         // update movie
         public function updateMovie($data) {
-            $this->db->query('UPDATE movies SET movie_title = :title, movie_type = :type, movie_duration = :duration, movie_release_date = :release_date, movie_rating = :rating, movie_language = :language, movie_playing_date = :playing_date, movie_ticket_price = :ticket_price, movie_story = :story, movie_cover = :cover, movie_trailer = :trailer WHERE movie_id = :id');
+            $this->db->query('UPDATE movies SET movie_title = :title, movie_type = :type, movie_duration = :duration, movie_released_at = :release_date, movie_rating = :rating, movie_language = :language, movie_playing_date = :playing_date, movie_ticket_price = :ticket_price, movie_story = :story, movie_cover = :cover, movie_triler = :trailer WHERE movie_id = :id');
             // Bind values
             $this->db->bind(':id', $data['id']);
             $this->db->bind(':title', $data['title']);

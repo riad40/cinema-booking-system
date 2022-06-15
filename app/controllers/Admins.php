@@ -266,13 +266,14 @@
             $id = $data['id'];
             // check for POST
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                print_r($_POST);
+                // print_r($_POST);
                 // process form data
                 // sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 // init data
                 $data = [
+                    'id' => $id,
                     'title' => trim($_POST['movie_title']),
                     'type' => trim($_POST['movie_type']),
                     'duration' => trim($_POST['movie_duration']),
@@ -354,8 +355,12 @@
                 if (empty($data['title_err']) && empty($data['type_err']) && empty($data['duration_err']) && empty($data['release_date_err']) && empty($data['rating_err']) && empty($data['language_err']) && empty($data['playing_date_err']) && empty($data['ticket_price_err']) && empty($data['story_err']) && empty($data['cover_err']) && empty($data['trailer_err'])) {
                     // validate
                     if ($this->movieModel->updateMovie($data)) {
-                        echo 'Movie updated';
-                        // header('Location: ' . URLROOT . '/admins/movies');
+                        // echo 'Movie updated';
+                        // js redirect to movies
+                        echo '<script>
+                                window.location.href = "http://localhost/cinema-wave/admins/movies";
+                             </script>';
+
                     } else {
                         die('Something went wrong');
                     }
