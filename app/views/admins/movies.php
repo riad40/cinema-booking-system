@@ -1,3 +1,6 @@
+<?php
+    // var_dump($data['movies']);
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -54,40 +57,41 @@
             </nav>                   
                     
             <!-- Section -->
+            <?php foreach($data['movies'] as $c){ ?>
             <section class="details" style="margin-top: 100px;">
                 <div class="movie-details">
                     <div class="cover">
-                        <img src="../assets/images/m3.jpg" alt="name of the movie">
+                        <img src="<?= URLROOT . '/public/assets/images/' . $c->movie_cover ?>" alt="name of the movie">
                     </div>
                     <div class="informations">
-                        <h1>Movie Title</h1>
+                        <h1><?= $c->movie_title ?></h1>
                         <div class="specific-details">
                             <p>Genre :</p>
-                            <p>Drama | Action</p>
+                            <p><?= $c->movie_type ?></p>
                         </div>
                         <div class="specific-details">
                             <p>Duration :</p>
-                            <p>120 min</p>
+                            <p><?= $c->movie_duration ?></p>
                         </div>
                         <div class="specific-details">
                             <p>Released :</p>
-                            <p>October 2021</p>
+                            <p><?= $c->movie_released_at ?></p>
                         </div>
                         <div class="specific-details">
                             <p>IMDb Rating :</p>
-                            <p>8.5</p>
+                            <p><?= $c->movie_rating ?></p>
                         </div>
                         <div class="specific-details">
                             <p>Language :</p>
-                            <p>English</p>
+                            <p><?= $c->movie_language ?></p>
                         </div>
                         <div class="specific-details">
                             <p>Playing Date :</p>
-                            <p>15 March 2022 | 05 : 00 pm</p>
+                            <p><?= $c->movie_playing_date ?></p>
                         </div>
                         <div class="specific-details">
                             <p>Ticket Price :</p>
-                            <p>55 MAD</p>
+                            <p><?= $c->movie_ticket_price ?></p>
                         </div>
                         <div class="book-ticket" style="padding: 0;">
                             <a href="update_movie" class="footer-button">Edit Movie</a>
@@ -98,20 +102,19 @@
                         <div class="movie-triler">
                             <h1>Movie Triler</h1>
                             <video controls>
-                                <source src="../assets/trailers/trailler.mp4" type="video/mp4">
+                                <source src="<?= URLROOT . '/public/assets/trailers/' . $c->movie_triler; ?>" type="video/mp4">
                             </video>
                         </div>
                         <div class="movie-story">
                             <h1>Movie Story</h1>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Quisquam, quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore doloremque placeat voluptatum quia repudiandae, esse totam temporibus obcaecati est minima!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <?= $c->movie_story ?>
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
+            <?php } ?>
         </section>
 
         <script>

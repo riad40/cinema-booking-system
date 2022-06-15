@@ -60,37 +60,40 @@
                     <form action="<?php echo URLROOT ?>/admins/add_movie" method="post" enctype="multipart/form-data" >
 
                         <label for="movie-title">Movie Title</label>
-                        <input type="text" name="movie-title" id="movie-title" placeholder="Write The Movie Title">
+                        <input type="text" name="movie_title" id="movie-title" placeholder="Write The Movie Title">
 
                         <label for="movie-cover">Movie Cover</label>
                         <div class="file-input">
-                            <input type="file" name="movie-cover" id="movie-cover">
+                            <input type="file" name="movie_cover" id="movie-cover">
                         </div>
 
+                        <label for="movie-type">Movie Type</label>
+                        <input type="text" name="movie_type" id="movie-type" placeholder="Write The Movie Type">
+
                         <label for="movie-duration">Movie Duration</label>
-                        <input type="text" name="movie-duration" id="movie-duration" placeholder="Write The Movie Duration">
+                        <input type="text" name="movie_duration" id="movie-duration" placeholder="Write The Movie Duration">
 
                         <label for="movie-released">Movie Released at</label>
-                        <input type="date" name="movie-released" id="movie-released">
+                        <input type="date" name="movie_released" id="movie-released">
 
                         <label for="movie-rating">Movie Rating</label>
-                        <input type="text" name="movie-rating" id="movie-rating" placeholder="Write The Movie Rating">
+                        <input type="text" name="movie_rating" id="movie-rating" placeholder="Write The Movie Rating">
 
                         <label for="movie-lang">Movie Language</label>
-                        <input type="text" name="movie-lang" id="movie-lang" placeholder="Write The Movie Language">
+                        <input type="text" name="movie_lang" id="movie-lang" placeholder="Write The Movie Language">
 
                         <label for="movie-playing-date">Playing Date</label>
-                        <input type="datetime-local" name="movie-playing-date" id="movie-playing-date" placeholder="Write The Movie Playing Date ">
+                        <input type="datetime-local" name="movie_playing_date" id="movie-playing-date" placeholder="Write The Movie Playing Date ">
 
                         <label for="movie-ticket-price">Movie Ticket Price</label>
-                        <input type="text" name="movie-ticket-price" id="movie-ticket-price" placeholder="Write The Movie Ticket Price">
+                        <input type="text" name="movie_ticket_price" id="movie-ticket-price" placeholder="Write The Movie Ticket Price">
 
                         <label for="movie-story">Movie Story</label>
-                        <textarea name="movie-story" id="movie-story" placeholder="Write The Movie Story"></textarea>
+                        <textarea name="movie_story" id="movie-story" placeholder="Write The Movie Story"></textarea>
 
                         <label for="movie-cover">Movie Triler</label>
                         <div class="file-input">
-                            <input type="file" name="movie-triler" id="movie-triler">
+                            <input type="file" name="movie_triler" id="movie-triler">
                         </div>
 
                         <input type="submit" name="add-movie" id="add-movie" value="Add Movie">
