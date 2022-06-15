@@ -94,7 +94,7 @@
                             <p><?= $c->movie_ticket_price ?></p>
                         </div>
                         <div class="book-ticket" style="padding: 0;">
-                            <a href="update_movie" class="footer-button">Edit Movie</a>
+                            <a href="update_movie/<?= $c->movie_id ?>" class="footer-button">Edit Movie</a>
                             <a href="#DeleteMovie" class="footer-button">Delete Movie</a>
                         </div>
                     </div>

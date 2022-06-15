@@ -33,5 +33,35 @@
             $results = $this->db->resultSet();
             return $results;
         }
+        // get movie by id
+        public function getMovieById($id) {
+            $this->db->query('SELECT * FROM movies WHERE movie_id = :id');
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            return $row;
+        }
+        // update movie
+        public function updateMovie($data) {
+            $this->db->query('UPDATE movies SET movie_title = :title, movie_type = :type, movie_duration = :duration, movie_release_date = :release_date, movie_rating = :rating, movie_language = :language, movie_playing_date = :playing_date, movie_ticket_price = :ticket_price, movie_story = :story, movie_cover = :cover, movie_trailer = :trailer WHERE movie_id = :id');
+            // Bind values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':type', $data['type']);
+            $this->db->bind(':duration', $data['duration']);
+            $this->db->bind(':release_date', $data['release_date']);
+            $this->db->bind(':rating', $data['rating']);
+            $this->db->bind(':language', $data['language']);
+            $this->db->bind(':playing_date', $data['playing_date']);
+            $this->db->bind(':ticket_price', $data['ticket_price']);
+            $this->db->bind(':story', $data['story']);
+            $this->db->bind(':cover', $data['cover']);
+            $this->db->bind(':trailer', $data['trailer']);
+            // Execute
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         
     }
