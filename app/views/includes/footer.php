@@ -18,13 +18,12 @@
             &copy 2022 Made with love by Riad
         </div>
     </footer>
-    <!-- Swiper JS -->
+    
+    <script src="<?= URLROOT ?>/public/assets/js/navbar.js"></script>
+    <script src="<?= URLROOT ?>/public/assets/js/table.js"></script>
+    <script src="<?= URLROOT ?>/public/assets/js/reserve.js"></script>    
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="<?php echo URLROOT ?>/public/assets/js/script.js"></script>
-    <?php
-        if(basename($_SERVER['REQUEST_URI']) == 'profile') {
-            echo '<script src="'.URLROOT.'/public/assets/js/booking_history.js"></script>';
-        } 
-    ?>
+    <script src="<?= URLROOT ?>/public/assets/js/swiper.js"></script>
+
 </body>
 </html>

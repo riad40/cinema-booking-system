@@ -27,21 +27,16 @@
         $link1 = '';
         $title2 = '';
         $link2 = '';
-        if(basename($_SERVER['REQUEST_URI']) == 'reserve' || basename($_SERVER['REQUEST_URI']) == 'profile' || basename($_SERVER['REQUEST_URI']) == 'edit_profile') {
+        if(isset($_SESSION['user_id'])) {
             $title1 = 'Profile';
-            $link1 = '../users/profile';
+            $link1 = URLROOT . '/users/profile';
             $title2 = 'Logout';
-            $link2 = '../users/logout';
-        } else if(basename($_SERVER['REQUEST_URI']) == 'cinema-wave') {
+            $link2 = URLROOT .'/users/logout';
+        } else{
             $title1 = 'Register';
-            $link1 = 'users/register';
+            $link1 = URLROOT . '/users/register';
             $title2 = 'Login';
-            $link2 = 'users/login';
-        } else {
-            $title1 = 'Login';
-            $link1 = '../users/login';
-            $title2 = 'Register';
-            $link2 = '../users/register';
+            $link2 = URLROOT . '/users/login';
         }
     ?>
     <!-- navbar -->

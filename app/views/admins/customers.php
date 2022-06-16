@@ -112,6 +112,6 @@
                     );
             };
         </script>
-        <script src="<?php echo URLROOT ?>/public/assets/js/booking_history.js"></script>
+        <script src="<?php echo URLROOT ?>/public/assets/js/table.js"></script>
     </body>
 </html>

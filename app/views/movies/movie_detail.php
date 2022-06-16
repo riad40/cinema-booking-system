@@ -41,7 +41,7 @@
                     <p><?= $data['movie']->movie_ticket_price ?></p>
                 </div>
                 <div class="book-ticket">
-                    <a href="<?= URLROOT ?>/movies/reserve" class="footer-button">Buy a Ticket</a>
+                    <a href="<?= URLROOT ?>/reservations/reserve/<?= $data['movie']->movie_id ?>" class="footer-button">Buy a Ticket</a>
                 </div>
             </div>
             <div>

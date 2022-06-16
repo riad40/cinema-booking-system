@@ -18,9 +18,5 @@
             $id = $movie->movie_id;
             $this->view('movies/movie_detail', $data);
         }
-        
-        public function reserve() {
-            $this->view('movies/reserve');
-        }
 
     }
