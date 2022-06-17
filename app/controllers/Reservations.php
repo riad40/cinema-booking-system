@@ -56,20 +56,19 @@
                 }      
             }
         }
-        // gernerate ticket method 
+        // generate ticket method
         public function generate_ticket($id) {
-            $reservation = $this->reservationModel->getReservationById($id);
-            $user = $this->userModel->getUserById($reservation->user_id);
-            $movie = $this->movieModel->getMovieById($reservation->movie_id);
-            $id = $reservation->reservation_id;
+            // Check if logged in
+            if (!isset($_SESSION['user_id'])) {
+                header('Location: ' . URLROOT . '/users/login');
+            }
+            $movie_reserved = $this->reservationModel->getReservationWithData($id);
             $data = [
-                'id' => $id,
-                'reservation' => $reservation,
-                'user' => $user,
-                'movie' => $movie
+                'title' => 'Generate Ticket',
+                'movie_reserved' => $movie_reserved,
+                'id' => $id
             ];
-            $this->view('reservations/generate_ticket', $data); 
+            $id = $movie_reserved->reservation_id;
+            $this->view('reservations/generate_ticket', $data);
         }
-
-        
     }

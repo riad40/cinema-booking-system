@@ -1,6 +1,8 @@
 <?php
     // include header
     include_once '../app/views/includes/header.php';
+    // var_dump($data['reservations']);
+    // var_dump($data['movie_reserved']);
 ?>
 <style>
     footer {
@@ -45,24 +47,29 @@
                             </th>
                         </tr>
                     </thead>
+                    <?php
+                    $i = 1;
+                    foreach($data['movie_reserved'] as $r){
+                    ?>
                     <tbody>
                         <tr>
-                            <td class="td-1">1</td>
+                            <td class="td-1"><?= $i++ ?></td>
                             <td class="tds">
-                                lorem ipsum
+                                <?= $r->movie_title ?>
                             </td>
                             <td class="tds">
-                                lorem ipsum
+                                <?= $r->movie_playing_date ?>
                             </td>
                             <td class="tds">
-                                lorem ipsum
+                                <?= $r->seats_reserved ?>
                             </td>
                             <td class="tdLinks">
-                                <a href="#" class="ediel">Download</a>
+                                <a href="../reservations/generate_ticket/<?= $r->reservation_id ?>" class="ediel">Download</a>
                                 <a href="#" class="ediel" style="color: red;">Cancel Reservation</a>
                             </td>
                         </tr>
                     </tbody>
+                    <?php } ?>
                 </table>
             </div>
     </section>

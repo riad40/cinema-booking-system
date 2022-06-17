@@ -4,6 +4,7 @@
         
         public function __construct() {
             $this->userModel = $this->model('User');
+            $this->reservationModel = $this->model('Reservation');
         }
         
         public function login() {
@@ -174,9 +175,11 @@
                 header('Location: ' . URLROOT . '/users/login');
             }
             $user = $this->userModel->getUserById($_SESSION['user_id']);
+            $movie_reserved = $this->reservationModel->getReservationsByUserWithData($_SESSION['user_id']);            
             $data = [
                 'title' => 'Profile',
-                'user' => $user
+                'user' => $user,
+                'movie_reserved' => $movie_reserved
             ];
             $this->view('users/profile', $data);
         }
@@ -275,5 +278,5 @@
             }
             $this->view('users/edit_profile', $data);
         }
-        
+
     }
