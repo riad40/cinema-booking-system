@@ -6,6 +6,12 @@
         public function __construct() {
             $this->db = new Database;
         }
+        // get all reservations
+        public function getAllReservations() {
+            $this->db->query('SELECT * FROM reservations');
+            $rows = $this->db->resultSet();
+            return $rows;
+        }
         // insert new reservation
         public function addReservation($data) {
             $this->db->query('INSERT INTO reservations VALUES(NULL, :seats_reserved	, :user_id, :movie_id)');
@@ -42,6 +48,19 @@
         // get count all reservations
         public function getCountReservations() {
             $this->db->query('SELECT COUNT(*) AS count FROM reservations');
+            $row = $this->db->single();
+            return $row;
+        }
+        // get all reservation and user and movie data
+        public function getAllReservationsWithData() {
+            $this->db->query('SELECT reservations.reservation_id, reservations.seats_reserved, reservations.user_id, reservations.movie_id, users.user_fname, users.user_email, movies.movie_title, movies.movie_playing_date FROM reservations INNER JOIN users ON reservations.user_id = users.user_id INNER JOIN movies ON reservations.movie_id = movies.movie_id');
+            $rows = $this->db->resultSet();
+            return $rows;
+        }
+        // get reservation by id
+        public function getReservationById($id) {
+            $this->db->query('SELECT * FROM reservations WHERE reservation_id = :id');
+            $this->db->bind(':id', $id);
             $row = $this->db->single();
             return $row;
         }

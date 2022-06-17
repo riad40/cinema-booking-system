@@ -111,12 +111,28 @@
             ];
             $this->view('admins/customers', $data);
         }
+        public function reservations() {
+            
+            if (!isset($_SESSION['admin_id'])) {
+                header('Location: ' . URLROOT . '/admins');
+            }
+            $reservation = $this->reservationModel->getAllReservationsWithData();           
+            $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
+            $data = [
+                'title' => 'reservations',
+                'reservations' => $reservation,
+                'admin' => $admin,
+            ];
+            $this->view('admins/reservations', $data);
+        }
         // add movie
         public function add_movie() {
             if (!isset($_SESSION['admin_id'])) {
                 header('Location: ' . URLROOT . '/admins');
             }
+            $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             $data = [
+                'admin' => $admin,
                 'title' => '',
                 'type' => '',
                 'duration' => '',
@@ -414,6 +430,10 @@
                     // try to delete a user's reservations and catch error if any
                     try {
                         $this->reservationModel->deleteReservationsByUser($id);
+                        // js redirect to customers
+                        echo '<script>
+                                window.location.href = "http://localhost/cinema-wave/admins/customers";
+                             </script>';
                     } catch (\Exception $e) {
                         die($e->getMessage());
                     }   

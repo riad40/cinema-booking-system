@@ -34,6 +34,12 @@
                         <span class="links_name">Customers</span>
                     </a>
                 </li>
+                <li>
+                    <a href="reservations">
+                        <i class='bx bxs-book-add'></i>                        
+                        <span class="links_name">Reservations</span>
+                    </a>
+                </li>
                 <li class="log_out">
                     <a href="logout">
                         <i class="bx bx-log-out"></i>
@@ -52,11 +58,16 @@
                             if (isset($data['title'])) {
                                 echo $data['title'];
                             } else {
-                                echo "Dashboard";
+                                echo "";
                             }
                         ?>
                     </span>
                 </div>
+                <?php
+                    if (isset($data['title']) && $data['title'] == "movies") {
+                        echo '<a href="add_movie" class="footer-button">Add Movie</a>';
+                    }
+                ?>
                 <div class="profile-details">
                     <span class="admin_name">Hi, <?= $data['admin']->admin_fname ?></span>
                 </div>
