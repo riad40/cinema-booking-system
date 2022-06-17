@@ -5,6 +5,7 @@
         public function __construct() {
             $this->adminModel = $this->model('Admin');
             $this->movieModel = $this->model('Movie');
+            $this->userModel = $this->model('User');
         }
         
         public function index() {
@@ -85,19 +86,28 @@
                 header('Location: ' . URLROOT . '/admins');
             }
             $movies = $this->movieModel->showMovies();
+            $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             $data = [
                 'title' => 'movies',
                 'movies' => $movies,
+                'admin' => $admin,
+
             ];
             $this->view('admins/movies', $data);
         }
-
         public function customers() {
             
             if (!isset($_SESSION['admin_id'])) {
                 header('Location: ' . URLROOT . '/admins');
             }
-            $this->view('admins/customers');
+            $customers = $this->userModel->getAllUsers();
+            $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
+            $data = [
+                'title' => 'customers',
+                'customers' => $customers,
+                'admin' => $admin,
+            ];
+            $this->view('admins/customers', $data);
         }
         // add movie
         public function add_movie() {
@@ -382,6 +392,26 @@
                     // js redirect to movies
                     echo '<script>
                             window.location.href = "http://localhost/cinema-wave/admins/movies";
+                         </script>';
+                } else {
+                    die('Something went wrong');
+                }
+            }
+        }
+        // delete user
+        public function delete_user($id){
+            $user = $this->userModel->getUserById($id);
+            $data = [
+                'user' => $user,
+                'id' => $user->user_id
+            ];
+            $id = $data['id'];
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                if ($this->userModel->deleteUser($id)) {
+                    // echo 'User deleted';
+                    // js redirect to users
+                    echo '<script>
+                            window.location.href = "http://localhost/cinema-wave/admins/customers";
                          </script>';
                 } else {
                     die('Something went wrong');

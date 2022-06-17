@@ -74,5 +74,29 @@
                 return false;
             }
         }
+        // get all users
+        public function getAllUsers() {
+            $this->db->query('SELECT * FROM users');
+            $rows = $this->db->resultSet();
+            return $rows;
+        }
+        // delete user
+        public function deleteUser($id) {
+            // set foreign key constraint to 0
+            $this->db->query('SET foreign_key_checks = 0');
+            $this->db->execute();
+            // delete user
+            $this->db->query('DELETE FROM users WHERE user_id = :id');
+            $this->db->bind(':id', $id);
+            // execute query
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+            // set foreign key constraint to 1
+            $this->db->query('SET foreign_key_checks = 1');
+            $this->db->execute();
+        }
 
     }

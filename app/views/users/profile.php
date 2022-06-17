@@ -59,7 +59,7 @@
                             </td>
                             <td class="tdLinks">
                                 <a href="#" class="ediel">Download</a>
-                                <a href="#" class="ediel">Cancel Reservation</a>
+                                <a href="#" class="ediel" style="color: red;">Cancel Reservation</a>
                             </td>
                         </tr>
                     </tbody>
