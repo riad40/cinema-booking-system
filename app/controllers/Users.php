@@ -147,8 +147,8 @@
                     $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
                     // register user from model
                     if ($this->userModel->register($data)) {
-                        // header('Location: ' . URLROOT . '/users/login');
-                        echo('User registered');
+                        header('Location: ' . URLROOT . '/users/login');
+                        // echo('User registered');
                     } else {
                         die('Something went wrong');
                     }

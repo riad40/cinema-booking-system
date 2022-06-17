@@ -6,6 +6,7 @@
             $this->adminModel = $this->model('Admin');
             $this->movieModel = $this->model('Movie');
             $this->userModel = $this->model('User');
+            $this->reservationModel = $this->model('Reservation');
         }
         
         public function index() {
@@ -77,6 +78,7 @@
             ];
             $data['user_count'] = $this->adminModel->getUserCount();
             $data['movie_count'] = $this->movieModel->getMovieCount();
+            $data['reservation_count'] = $this->reservationModel->getCountReservations();
             $this->view('admins/dashboard', $data);
         }
 
@@ -409,10 +411,12 @@
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 if ($this->userModel->deleteUser($id)) {
                     // echo 'User deleted';
-                    // js redirect to users
-                    echo '<script>
-                            window.location.href = "http://localhost/cinema-wave/admins/customers";
-                         </script>';
+                    // try to delete a user's reservations and catch error if any
+                    try {
+                        $this->reservationModel->deleteReservationsByUser($id);
+                    } catch (\Exception $e) {
+                        die($e->getMessage());
+                    }   
                 } else {
                     die('Something went wrong');
                 }

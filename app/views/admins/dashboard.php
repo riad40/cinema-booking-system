@@ -17,8 +17,19 @@
                             <div class="number"><?= $data['user_count']->c?></div>
                         </div>
                     </div>
+                    <div class="boxi">
+                        <div class="right-side" style="text-align: center;">
+                            <div class="box-topic">Total Reservations</div>
+                            <div class="number"><?= $data['reservation_count']->count?></div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <pre style="color: #fff;">
+                <?php
+                    print_r($data['reservation_count']);
+                ?>
+            </pre>
         </section>
 
         <script>

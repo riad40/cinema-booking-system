@@ -65,6 +65,10 @@
         }
         // delete movie
         public function deleteMovie($id) {
+            // set foreign key constraint to 0
+            $this->db->query('SET FOREIGN_KEY_CHECKS = 0');
+            $this->db->execute();
+            // delete movie
             $this->db->query('DELETE FROM movies WHERE movie_id = :id');
             // Bind values
             $this->db->bind(':id', $id);
@@ -74,6 +78,9 @@
             } else {
                 return false;
             }
+            // set foreign key constraint to 1
+            $this->db->query('SET FOREIGN_KEY_CHECKS = 1');
+            $this->db->execute();
         }
         // count all movies
         public function getMovieCount() {
