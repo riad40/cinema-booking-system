@@ -59,7 +59,7 @@
         }
         // get reservation by id
         public function getReservationById($id) {
-            $this->db->query('SELECT * FROM reservations WHERE reservation_id = :id');
+            $this->db->query('SELECT * FROM reservations INNER JOIN movies ON reservations.movie_id = movies.movie_id WHERE reservations.reservation_id=:id');
             $this->db->bind(':id', $id);
             $row = $this->db->single();
             return $row;
@@ -85,4 +85,11 @@
             $row = $this->db->single();
             return $row;
         } 
+        // delete a reservation by id
+        public function deleteReservation($id) {
+            $this->db->query('DELETE FROM reservations WHERE reservation_id = :id');
+            $this->db->bind(':id', $id);
+            $this->db->execute();
+        }
+        
     }

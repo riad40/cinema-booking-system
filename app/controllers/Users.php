@@ -184,6 +184,32 @@
             $this->view('users/profile', $data);
         }
 
+        // delete a reservation
+        public function cancelReservation($id) {
+            // Check if logged in
+            if (!isset($_SESSION['user_id'])) {
+                header('Location: ' . URLROOT . '/users/login');
+            }
+            $movie_reserved = $this->reservationModel->getReservationById($id);
+            // var_dump($movie_reserved);
+            $data = [
+                'movie_reserved' => $movie_reserved
+            ];
+            // check for get request
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                
+                $play_date = $movie_reserved->movie_playing_date;
+                $date_now = date('Y-m-d H:i:s');
+                // check if playing date is in the future than delete reservation
+                if ($play_date > $date_now) {
+                    $this->reservationModel->deleteReservation($id);
+                    header('Location: ' . URLROOT . '/users/profile');
+                    echo('Reservation deleted');
+                } else {
+                    echo'<script>alert("Reservation cannot be deleted")</script>';
+                }
+            }
+        }
         public function edit_profile() {
             // Check if logged in
             if (!isset($_SESSION['user_id'])) {

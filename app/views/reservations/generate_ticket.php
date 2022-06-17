@@ -133,9 +133,7 @@
     </div>
 </page>
 <script>
-    if(window.print()){
-        window.location.href = "http://localhost/cinema-wave";
-    }
+    window.print()
 </script>
 </body>
 </html>
