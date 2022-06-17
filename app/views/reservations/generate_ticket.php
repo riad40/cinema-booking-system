@@ -56,8 +56,27 @@
         padding: 10px;
         border-radius: 5px;
         margin-right: 10px;
-
-
+    }
+    .redirect {
+        width: 100%;
+        text-align: center;
+        margin-top: 50px;
+    }
+    a {
+        text-decoration: none;
+        padding: 10px;
+        color: #fff;
+        width: 500px;
+        background: #41CD7D;
+        font-weight: bold;
+    }
+    @media print {
+        .redirect {
+            display: none;
+        }
+        page {
+            box-shadow: none;
+        }
     }
 </style>
 </head>
@@ -109,7 +128,15 @@
             </li>
         </ul>
     </div>
+    <div class="redirect">
+        <a href="http://localhost/cinema-wave">Go Back To Home Page</a>
+    </div>
 </page>
+<script>
+    if(window.print()){
+        window.location.href = "http://localhost/cinema-wave";
+    }
+</script>
 </body>
 </html>
 
