@@ -130,6 +130,7 @@
     <section class="none" id="payment">
         <h2 class="heading">Process Your payment</h2>
         <div class="contact-container">
+            <div class="errors"><?= $data['errors'] ?></div>
             <form action="<?= URLROOT ?>/reservations/reserve/<?= $data['movie']->movie_id ?>" method="post" id="paymentForm">
                 <input type="hidden" name="seats_reserved" id="booked_seats">
                 <label for="">Card Type</label>

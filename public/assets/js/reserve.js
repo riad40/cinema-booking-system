@@ -1,5 +1,4 @@
 // seat validation
-alert('js runing')
 let selectedSeatsValidate = []
 const seats = document.querySelectorAll('.seat-number')
 seats.forEach(seat => {
@@ -37,7 +36,11 @@ const paymentForm = document.querySelector('#payment')
 
 continueToPayment.addEventListener('click', () => {
     if(selectedSeatsValidate.length == 0){
-        alert('Please select at least one seat')
+        swal({
+            title: "Select At Least One Seat",
+            icon: "error",
+            button: "OK!",
+        })
     } else {
         paymentForm.classList.remove('none')
         paymentForm.classList.add('animate__animated', 'animate__backInLeft')
@@ -61,26 +64,14 @@ paymentForm.addEventListener('submit', e => {
         card_type_error.textContent = 'Please enter card type'
         card_type.style.borderColor = 'red'
         errors++
-    } else if(card_type.value !== 'visa' || card_type.value !== 'MasterCard'){
-        card_type_error.textContent = 'Card type is not valid'
-        card_type.style.borderColor = 'red'
-        errors++
     }
     if (card_number.value == '') {
         card_number_error.textContent = 'Please enter card number'
         card_number.style.borderColor = 'red'
         errors++
-    } else if(card_number.value.length < 16){
-        card_number_error.textContent = 'Card number is not valid'
-        card_number.style.borderColor = 'red'
-        errors++
     }
     if (card_expiry.value == '') {
         card_expiry_error.textContent = 'Please enter expiry date'
-        card_expiry.style.borderColor = 'red'
-        errors++
-    } else if(card_expiry.value.length < 5){
-        card_expiry_error.textContent = 'Expiry date is not valid'
         card_expiry.style.borderColor = 'red'
         errors++
     } else if(!card_expiry.value.includes('/')){

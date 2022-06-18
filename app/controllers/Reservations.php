@@ -18,10 +18,9 @@
                 $reserved_seats = $this->reservationModel->getReservedSeats($id);
                 $data = [
                     'movie' => $movie,
-                    'reserved_seats' => $reserved_seats
+                    'reserved_seats' => $reserved_seats,
+                    'errors' => ''
                 ];
-                $id = $movie->movie_id;
-                $this->view('reservations/reserve', $data);
             }
             // check for post request 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -30,31 +29,32 @@
                 $reservation = $this->reservationModel->getReservationById($id);
                 $user = $this->userModel->getUserById($_SESSION['user_id']);
                 $movie = $this->movieModel->getMovieById($id);
-                $id = $movie->movie_id;
                 $data = [
                     'movie_id' => $id,
                     'user_id' => $_SESSION['user_id'],
                     'seats_reserved' => $_POST['seats_reserved'],
                     'reservation' => $reservation,
                     'user' => $user,
-                    'movie' => $movie
+                    'movie' => $movie,
+                    'errors' => ''
                 ]; 
-
-
-                // insert data from reservtion model
-                if ($this->reservationModel->addReservation($data)) {
-                    // try to redirect the user to generate ticket view and catch error if something went wrong
-                    try {
-                        echo '<script>
-                                window.location.href = "http://localhost/cinema-wave/users/profile";
-                            </script>';
-                    } catch (Exception $e) {
-                        die($e->getMessage());
-                    } 
+                if(!empty($data['seats_reserved'])) {
+                    if ($this->reservationModel->addReservation($data)) {
+                        try {
+                            echo '<script>
+                                    window.location.href = "http://localhost/cinema-wave/users/profile";
+                                </script>';
+                        } catch (Exception $e) {
+                            die($e->getMessage());
+                        } 
+                    } else {
+                        die('Something went wrong');
+                    }   
                 } else {
-                    die('Something went wrong');
-                }      
+                    $data['errors'] = 'Please select at least one seat';
+                }
             }
+            $this->view('reservations/reserve', $data);
         }
         // generate ticket method
         public function generate_ticket($id) {
@@ -66,7 +66,7 @@
             $data = [
                 'title' => 'Generate Ticket',
                 'movie_reserved' => $movie_reserved,
-                'id' => $id
+                'errors' => ''
             ];
             $this->view('reservations/generate_ticket', $data);
         }

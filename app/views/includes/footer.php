@@ -24,6 +24,7 @@
     <script src="<?= URLROOT ?>/public/assets/js/reserve.js"></script>    
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="<?= URLROOT ?>/public/assets/js/swiper.js"></script>
+    <script src="<?= URLROOT ?>/public/assets/js/sweetalert.js"></script>
 
 </body>
 </html>
