@@ -2,7 +2,7 @@
 
 # Project Context
 
-***cinema wave*** is a web application for a virtual cinema, the app affords two services to the customer the first one is the ability to view the latest news about movies theme. the seconde service is a booking system that allows the customer to reserve a ticket to watch a certain movie or show.
+***cinema wave*** is a web application for a virtual cinema, the app main service is a booking system that allows the customer to reserve a ticket to watch a certain movie or.
 
 well, the application has two sides one for the user side is just allows the customer to get the benefit of the application services.
 
@@ -10,7 +10,6 @@ And the admin side. it will just manage and track the user usage for the applica
 
 ## User Side
 
-- As a user i want to be able to view the latest hot news that related to movies
 - As a user i want to be able to register and log in to get the access to reserve a ticket for a movie
 - As a user i want to be able to view the weekly movies listing
 - As a user i want to be able to search for a specific movie
@@ -30,7 +29,6 @@ And the admin side. it will just manage and track the user usage for the applica
 ## App Features
 
 - **Front-office**
-    - Home page : this page will containe the latest hot news about movies theme by consuming an api
     - login / sign up : this page is about the login system forms
     - weekly movies : this page will containe the weekly list of plying movies
     - About Us : this page will be just like a rapport about the cinema
@@ -44,7 +42,7 @@ And the admin side. it will just manage and track the user usage for the applica
 ## Technological Specifications
 
 - **Front-end**
-  - html & css, Tailwindcss, JavaScript, json
+  - html & css, Tailwindcss, JavaScript
 - **Back-end**
     - php, MySql, APIs
 
