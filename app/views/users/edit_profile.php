@@ -1,7 +1,7 @@
     <?php
         // include header
         include_once '../app/views/includes/header.php';
-        // print_r($data);
+        print_r($data);
     ?>
 
     <!-- Update Your Profile section -->
@@ -27,7 +27,7 @@
     </section>
     <style>
         footer {
-            margin-top: 80px;
+            margin-top: 102px;
         }
     </style>
     

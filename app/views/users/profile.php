@@ -3,10 +3,11 @@
     include_once '../app/views/includes/header.php';
     // var_dump($data['reservations']);
     // var_dump($data['movie_reserved']);
+    // var_dump($data);
 ?>
 <style>
     footer {
-        margin-top: 60px;
+        margin-top: 116px;
     }
 </style>
     <!-- profile section -->
@@ -18,12 +19,12 @@
                     <img src="<?= URLROOT . '/public/assets/images/' . $data['user']->user_image; ?>" alt="">
                 </div>
                 <div class="profile-details">
-                    <h1><?php echo $data['user']->user_fname; ?></h1>
-                    <h2><?php echo $data['user']->user_email; ?></h2>
-                    <h3><?php echo $data['user']->user_phone; ?></h3>
+                    <h1><?= $data['user']->user_fname; ?></h1>
+                    <h2><?= $data['user']->user_email; ?></h2>
+                    <h3><?= $data['user']->user_phone; ?></h3>
                 </div>
             </div>
-            <a href="./edit_profile" class="heading">Edit Profile</a>
+            <a href="edit_profile" class="heading">Edit Profile</a>
         </div>
         <h2 class="heading">Reservation History</h2>
         <div class="reservation-container">

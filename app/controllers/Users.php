@@ -158,7 +158,6 @@
             
             $this->view('users/register', $data);
         }
-
         public function logout() {
             session_start();
             unset($_SESSION['user_id']);
@@ -168,14 +167,13 @@
             session_destroy();
             header('Location: ' . URLROOT);
         }
-
         public function profile() {
             // Check if logged in
             if (!isset($_SESSION['user_id'])) {
                 header('Location: ' . URLROOT . '/users/login');
             }
             $user = $this->userModel->getUserById($_SESSION['user_id']);
-            $movie_reserved = $this->reservationModel->getReservationsByUserWithData($_SESSION['user_id']);            
+            $movie_reserved = $this->reservationModel->getReservationsByUserWithData($_SESSION['user_id']);
             $data = [
                 'title' => 'Profile',
                 'user' => $user,
@@ -213,15 +211,22 @@
                 header('Location: ' . URLROOT . '/users/login');
             }
             $user = $this->userModel->getUserById($_SESSION['user_id']);
+            $movie_reserved = $this->reservationModel->getReservationsByUserWithData($_SESSION['user_id']);
             $data = [
                 'title' => 'Edit Profile',
-                'user' => $user
+                'user' => $user,
+                'movie_reserved' => $movie_reserved,
+                'errors' => '',
+                'success' => ''
             ];
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $user = $this->userModel->getUserById($_SESSION['user_id']);
                 // Sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
+                    'user' => $user,
+                    'movie_reserved' => $movie_reserved,
                     'title' => 'Update Profile',
                     'fname' => trim($_POST['fname']),
                     'email' => trim($_POST['email']),
@@ -231,75 +236,38 @@
                     'temp_image' => $_FILES['profile-image']['tmp_name'],
                     'folder' => 'C:/Users/Youcode/Desktop/xampp/htdocs/cinema-wave/public/assets/images/' . $_FILES['profile-image']['name'],
                     'id' => $_SESSION['user_id'],
-                    'image_err' => '',
-                    'fname_err' => '',
-                    'email_err' => '',
-                    'phone_err' => '',
-                    'pwd_err' => ''
+                    'errors' => '',
+                    'success' => ''
                 ];
-
-                // image validation
-                if (!empty($data['image'])) {
-                    $image_ext = explode('.', $data['image']);
-                } else {
-                    $image_ext = explode('.', $user->user_image);
-                }
-                $allowed_ext = ['jpg', 'jpeg', 'png'];
-                if (!in_array(strtolower(end($image_ext)), $allowed_ext)) {
-                    $data['image_err'] = 'Please upload a valid image';
-                }
                 // upload image
                 if (!empty($data['image'])) {
                     if (!move_uploaded_file($data['temp_image'], $data['folder'])) {
-                        $data['image_err'] = 'Something went wrong';
+                        $data['errors'] = 'Something went wrong';
                     }
+                } else {
+                    $data['errors'] = 'Please upload an image';
                 }
-
-                // validate name
-                if(empty($data['fname'])) {
-                    $data['fname_err'] = 'Please enter your full name';
+                // validate if all fields are filled
+                if(empty($data['fname']) || empty($data['email']) || empty($data['phone']) || empty($data['pwd'])) {                
+                    $data['errors'] = 'Please fill in all fields';
                 }
                 // validate email
-                if(empty($data['email'])) {
-                    $data['email_err'] = 'Please enter your email';
-                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['email_err'] = 'Please enter a valid email';
-                } elseif ($this->userModel->findUserByEmail($data['email']) == true) {
-                    $data['email_err'] = 'Email already exists';
-                }   
-                // validate phone
-                if(empty($data['phone'])) {
-                    $data['phone_err'] = 'Please enter your phone number';
-                }
-                // validate password
-                if(!empty($data['pwd'])) {
-                    if (strlen($data['pwd']) < 6) {
-                        $data['pwd_err'] = 'Password must be at least 6 characters';
-                    }
+                if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['errors'] = 'Please enter a valid email';
                 }
                 // make sure errors are empty
-                if (empty($data['fname_err']) && empty($data['email_err']) && empty($data['phone_err']) && empty($data['pwd_err']) && empty($data['image_err'])) {
+                if (empty($data['errors'])) {
                     // hash password
                     $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
                     // register user from model
                     if ($this->userModel->updateUser($data)) {
+                        $data['success'] = 'Your Profile updated successfully';
                         header('Location: ' . URLROOT . '/users/profile');
                     } else {
                         die('Something went wrong');
                     }
                 }
-            } else {
-                $data = [
-                    'title' => 'Update Profile',
-                    'user' => $user,
-                    'image_err' => '',
-                    'fname_err' => '',
-                    'email_err' => '',
-                    'phone_err' => '',
-                    'pwd_err' => ''
-                ];
             }
             $this->view('users/edit_profile', $data);
         }
-
     }
