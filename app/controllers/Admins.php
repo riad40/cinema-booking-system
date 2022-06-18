@@ -73,7 +73,7 @@
             }
             $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             $data = [
-                'title' => 'dashboard',
+                'page' => 'dashboard',                
                 'admin' => $admin,
             ];
             $data['user_count'] = $this->adminModel->getUserCount();
@@ -90,7 +90,7 @@
             $movies = $this->movieModel->showMovies();
             $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             $data = [
-                'title' => 'movies',
+                'page' => 'movies',                
                 'movies' => $movies,
                 'admin' => $admin,
 
@@ -105,7 +105,7 @@
             $customers = $this->userModel->getAllUsers();
             $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             $data = [
-                'title' => 'customers',
+                'page' => 'customers',                
                 'customers' => $customers,
                 'admin' => $admin,
             ];
@@ -119,7 +119,7 @@
             $reservation = $this->reservationModel->getAllReservationsWithData();           
             $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             $data = [
-                'title' => 'reservations',
+                'page' => 'reservations',                
                 'reservations' => $reservation,
                 'admin' => $admin,
             ];
@@ -132,6 +132,7 @@
             }
             $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             $data = [
+                'page' => 'add movie',
                 'admin' => $admin,
                 'title' => '',
                 'type' => '',
@@ -144,17 +145,8 @@
                 'story' => '',
                 'cover' => '',
                 'trailer' => '',
-                'title_err' => '',
-                'type_err' => '',
-                'duration_err' => '',
-                'release_date_err' => '',
-                'rating_err' => '',
-                'language_err' => '',
-                'playing_date_err' => '',
-                'ticket_price_err' => '',
-                'story_err' => '',
-                'cover_err' => '',
-                'trailer_err' => ''
+                'errors' => '',
+                'success' => ''
             ];
             // check for POST
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -164,6 +156,8 @@
                 
                 // init data
                 $data = [
+                    'page' => 'add movie',
+                    'admin' => $admin,
                     'title' => trim($_POST['movie_title']),
                     'type' => trim($_POST['movie_type']),
                     'duration' => trim($_POST['movie_duration']),
@@ -179,74 +173,27 @@
                     'trailer' => $_FILES['movie_triler']['name'],
                     'temp_vid' => $_FILES['movie_cover']['tmp_name'],
                     'folderv' => 'C:/Users/Youcode/Desktop/xampp/htdocs/cinema-wave/public/assets/trailers/' . $_FILES['movie_cover']['name'],
-                    'title_err' => '',
-                    'type_err' => '',
-                    'duration_err' => '',
-                    'release_date_err' => '',
-                    'rating_err' => '',
-                    'language_err' => '',
-                    'playing_date_err' => '',
-                    'ticket_price_err' => '',
-                    'story_err' => '',
-                    'cover_err' => '',
-                    'trailer_err' => ''
+                    'errors' => '',
+                    'success' => ''
                 ];
-                // validate title
-                if (empty($data['title'])) {
-                    $data['title_err'] = 'Please enter title';
+                // validate data inputs
+                if (empty($data['title']) || empty($data['type']) || empty($data['duration']) || empty($data['release_date']) || empty($data['rating']) || empty($data['language']) || empty($data['playing_date']) || empty($data['ticket_price']) || empty($data['story']) || empty($data['cover']) || empty($data['trailer'])) {
+                    $data['errors'] = 'Please fill in all fields';
                 }
-                // validate type
-                if (empty($data['type'])) {
-                    $data['type_err'] = 'Please enter type';
-                }
-                // validate duration
-                if (empty($data['duration'])) {
-                    $data['duration_err'] = 'Please enter duration';
-                }
-                // validate release date
-                if (empty($data['release_date'])) {
-                    $data['release_date_err'] = 'Please enter release date';
-                }
-                // validate rating
-                if (empty($data['rating'])) {
-                    $data['rating_err'] = 'Please enter rating';
-                }
-                // validate language
-                if (empty($data['language'])) {
-                    $data['language_err'] = 'Please enter language';
-                }
-                // validate playing date
-                if (empty($data['playing_date'])) {
-                    $data['playing_date_err'] = 'Please enter playing date';
-                }
-                // validate ticket price
-                if (empty($data['ticket_price'])) {
-                    $data['ticket_price_err'] = 'Please enter ticket price';
-                }
-                // validate story
-                if (empty($data['story'])) {
-                    $data['story_err'] = 'Please enter story';
-                }
-                // image cover validation
-                if (empty($data['cover'])) {
-                    $data['cover_err'] = 'Please enter cover';
-                } else {
-                    // move image to folder
+                // move image to folder
+                if (!empty($data['cover'])) {
                     move_uploaded_file($data['temp_image'], $data['folder']);
                 }
-                // video trailer validation
-                if (empty($data['trailer'])) {
-                    $data['trailer_err'] = 'Please enter trailer';
-                } else {
-                    // move image to folder
+                // move trailer to folderv
+                if (!empty($data['trailer'])) {
                     move_uploaded_file($data['temp_vid'], $data['folderv']);
                 }
                 // make sure no errors
-                if (empty($data['title_err']) && empty($data['type_err']) && empty($data['duration_err']) && empty($data['release_date_err']) && empty($data['rating_err']) && empty($data['language_err']) && empty($data['playing_date_err']) && empty($data['ticket_price_err']) && empty($data['story_err']) && empty($data['cover_err']) && empty($data['trailer_err'])) {
+                if (empty($data['errors'])) {
                     // validate
                     if ($this->movieModel->addMovie($data)) {
                         // echo 'Movie added';
-                        header('Location: ' . URLROOT . '/admins/movies');
+                        header('Location: ' . URLROOT . '/admins/movies?add=success');
                     } else {
                         die('Something went wrong');
                     }
@@ -261,48 +208,35 @@
             }
             // get movie from model
             $movie = $this->movieModel->getMovieById($id);
+            $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
             // check if movie exists
-            if ($movie) {
-                $data = [
-                    'id' => $movie->movie_id,
-                    'title' => $movie->movie_title,
-                    'type' => $movie->movie_type,
-                    'duration' => $movie->movie_duration,
-                    'release_date' => $movie->movie_released_at,
-                    'rating' => $movie->movie_rating,
-                    'language' => $movie->movie_language,
-                    'playing_date' => $movie->movie_playing_date,
-                    'ticket_price' => $movie->movie_ticket_price,
-                    'story' => $movie->movie_story,
-                    'cover' => $movie->movie_cover,
-                    'trailer' => $movie->movie_triler,
-                    'title_err' => '',
-                    'type_err' => '',
-                    'duration_err' => '',
-                    'release_date_err' => '',
-                    'rating_err' => '',
-                    'language_err' => '',
-                    'playing_date_err' => '',
-                    'ticket_price_err' => '',
-                    'story_err' => '',
-                    'cover_err' => '',
-                    'trailer_err' => ''
-                ];
-                $this->view('admins/update_movie', $data);
-            } else {
-                die('Movie does not exist');
-            }
-            $id = $data['id'];
+            $data = [
+                'page' => 'update movie',
+                'id' => $movie->movie_id,
+                'title' => $movie->movie_title,
+                'type' => $movie->movie_type,
+                'duration' => $movie->movie_duration,
+                'release_date' => $movie->movie_released_at,
+                'rating' => $movie->movie_rating,
+                'language' => $movie->movie_language,
+                'playing_date' => $movie->movie_playing_date,
+                'ticket_price' => $movie->movie_ticket_price,
+                'story' => $movie->movie_story,
+                'cover' => $movie->movie_cover,
+                'trailer' => $movie->movie_triler,
+                'admin' => $admin,
+                'errors' => '',
+                'success' => ''
+            ];
             // check for POST
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // print_r($_POST);
-                // process form data
-                // sanitize POST data
+
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 // init data
                 $data = [
                     'id' => $id,
+                    'page' => 'update movie',
                     'title' => trim($_POST['movie_title']),
                     'type' => trim($_POST['movie_type']),
                     'duration' => trim($_POST['movie_duration']),
@@ -318,76 +252,27 @@
                     'trailer' => $_FILES['movie_triler']['name'],
                     'temp_vid' => $_FILES['movie_cover']['tmp_name'],
                     'folderv' => 'C:/Users/Youcode/Desktop/xampp/htdocs/cinema-wave/public/assets/trailers/' . $_FILES['movie_cover']['name'],
-                    'title_err' => '',
-                    'type_err' => '',
-                    'duration_err' => '',
-                    'release_date_err' => '',
-                    'rating_err' => '',
-                    'language_err' => '',
-                    'playing_date_err' => '',
-                    'ticket_price_err' => '',
-                    'story_err' => '',
-                    'cover_err' => '',
-                    'trailer_err' => ''
+                    'admin' => $admin,
+                    'errors' => '',
+                    'success' => ''
                 ];
-                // validate title
-                if (empty($data['title'])) {
-                    $data['title_err'] = 'Please enter title';
+                // validate data inputs
+                if (empty($data['title']) || empty($data['type']) || empty($data['duration']) || empty($data['release_date']) || empty($data['rating']) || empty($data['language']) || empty($data['playing_date']) || empty($data['ticket_price']) || empty($data['story']) || empty($data['cover']) || empty($data['trailer'])) {
+                    $data['errors'] = 'Please fill in all fields';
                 }
-                // validate type
-                if (empty($data['type'])) {
-                    $data['type_err'] = 'Please enter type';
-                }
-                // validate duration
-                if (empty($data['duration'])) {
-                    $data['duration_err'] = 'Please enter duration';
-                }
-                // validate release date
-                if (empty($data['release_date'])) {
-                    $data['release_date_err'] = 'Please enter release date';
-                }
-                // validate rating
-                if (empty($data['rating'])) {
-                    $data['rating_err'] = 'Please enter rating';
-                }
-                // validate language
-                if (empty($data['language'])) {
-                    $data['language_err'] = 'Please enter language';
-                }
-                // validate playing date
-                if (empty($data['playing_date'])) {
-                    $data['playing_date_err'] = 'Please enter playing date';
-                }
-                // validate ticket price
-                if (empty($data['ticket_price'])) {
-                    $data['ticket_price_err'] = 'Please enter ticket price';
-                }
-                // validate story
-                if (empty($data['story'])) {
-                    $data['story_err'] = 'Please enter story';
-                }
-                // image cover validation
-                if (empty($data['cover'])) {
-                    $data['cover_err'] = 'Please enter cover';
-                } else {
-                    // move image to folder
+                // move image to folder
+                if (!empty($data['cover'])) {
                     move_uploaded_file($data['temp_image'], $data['folder']);
                 }
-                // video trailer validation
-                if (empty($data['trailer'])) {
-                    $data['trailer_err'] = 'Please enter trailer';
-                } else {
-                    // move image to folder
+                // move trailer to folderv
+                if (!empty($data['trailer'])) {
                     move_uploaded_file($data['temp_vid'], $data['folderv']);
                 }
                 // make sure no errors
-                if (empty($data['title_err']) && empty($data['type_err']) && empty($data['duration_err']) && empty($data['release_date_err']) && empty($data['rating_err']) && empty($data['language_err']) && empty($data['playing_date_err']) && empty($data['ticket_price_err']) && empty($data['story_err']) && empty($data['cover_err']) && empty($data['trailer_err'])) {
-                    // validate
+                if (empty($data['errors'])) {
                     if ($this->movieModel->updateMovie($data)) {
-                        // echo 'Movie updated';
-                        // js redirect to movies
                         echo '<script>
-                                window.location.href = "http://localhost/cinema-wave/admins/movies";
+                                window.location.href = "http://localhost/cinema-wave/admins/movies?edit=success";
                              </script>';
 
                     } else {
@@ -395,6 +280,7 @@
                     }
                 }
             }
+            $this->view('admins/update_movie', $data);
         }
         // delete movie
         public function delete_movie($id){
@@ -406,8 +292,6 @@
             $id = $data['id'];
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 if ($this->movieModel->deleteMovie($id)) {
-                    // echo 'Movie deleted';
-                    // js redirect to movies
                     echo '<script>
                             window.location.href = "http://localhost/cinema-wave/admins/movies";
                          </script>';

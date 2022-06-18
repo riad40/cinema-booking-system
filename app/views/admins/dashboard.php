@@ -25,11 +25,6 @@
                     </div>
                 </div>
             </div>
-            <pre style="color: #fff;">
-                <?php
-                    print_r($data['reservation_count']);
-                ?>
-            </pre>
         </section>
 
         <script>

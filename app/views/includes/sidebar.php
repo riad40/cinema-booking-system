@@ -22,12 +22,24 @@
                         <span class="links_name">Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="movies">
-                        <i class="bx bx-box"></i>
-                        <span class="links_name">Movies</span>
-                    </a>
-                </li>
+                <?php
+                    if(isset($data['page']) && $data['page'] == 'add_movie' || $data['page'] == 'update movie'){
+                        echo '<li>
+                            <a href="../movies">
+                                <i class="bx bx-box"></i>
+                                <span class="links_name">Movies</span>
+                            </a>
+                        </li>';
+
+                    } else {
+                        echo '<li>
+                            <a href="movies">
+                                <i class="bx bx-box"></i>
+                                <span class="links_name">Movies</span>
+                            </a>
+                        </li>';
+                    }
+                ?>
                 <li>
                     <a href="customers">
                         <i class="bx bx-user"></i>
@@ -55,8 +67,8 @@
                     <span class="dashboard">
                         <?php
                             // check wich page we are on and change the name of the page
-                            if (isset($data['title'])) {
-                                echo $data['title'];
+                            if (isset($data['page'])) {
+                                echo $data['page'];
                             } else {
                                 echo "";
                             }
@@ -64,7 +76,7 @@
                     </span>
                 </div>
                 <?php
-                    if (isset($data['title']) && $data['title'] == "movies") {
+                    if (isset($data['page']) && $data['page'] == "movies") {
                         echo '<a href="add_movie" class="footer-button">Add Movie</a>';
                     }
                 ?>

@@ -792,6 +792,14 @@ nav .sidebar-button i {
     margin-right: 10px;
 }
 
+.home-section .details .movie-details .cover {
+    width: 100%;
+}
+
+.home-section .details .movie-details .cover img {
+    width: 100%;
+}
+
 .home-section nav .profile-details {
     display: flex;
     align-items: center;
@@ -861,7 +869,7 @@ nav .sidebar-button i {
     }
 
     .home-section nav {
-        width: calc(100% - 60px);
+        width: 100%;
         left: 60px;
     }
 
@@ -878,6 +886,23 @@ nav .sidebar-button i {
     }
 }
 
+@media (max-width: 1790px) {
+
+    .home-section .details .movie-details .cover{
+        width: 100%;
+    }
+    .home-section .details .movie-details .cover img {
+        width: 100%;
+    }
+    .home-section .details .movie-details .informations {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+}
 @media (max-width: 700px) {
 
     .home-section nav .profile-details {
@@ -982,7 +1007,12 @@ nav .sidebar-button i {
     text-align: center;
 }
 .success {
-    color: green;
+    padding: 20px;
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    width: fit-content;
     font-size: 21px;
     text-align: center;
+    border-radius: 5px;
+    margin: 0 auto;
 }

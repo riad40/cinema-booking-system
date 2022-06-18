@@ -7,6 +7,7 @@
             <section class="contact-section" id="Contact">
                 <h2 class="heading">Update This Movie</h2>
                 <div class="contact-container">
+                    <div class="errors"><?= $data['errors'] ?></div>
                     <form action="<?php echo URLROOT ?>/admins/update_movie/<?= $data['id'] ?>" method="post" enctype="multipart/form-data" >
 
                         <label for="movie-title">Movie Title</label>

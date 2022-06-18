@@ -1,18 +1,31 @@
-<?php
+            <?php
                 // include sidebar from includes folder
                 include_once APPROOT . '/views/includes/sidebar.php';
             ?>                
-                    
+            <div style="margin-top: 100px;">
+                <?php
+
+                    if(isset($_GET['add'])){
+                        if($_GET['add'] == 'success'){
+                            echo '<div class="success">Movie Added Successfully</div>';
+                        }
+                    }elseif(isset($_GET['edit'])) {
+                        if ($_GET['edit'] == 'success') {
+                            echo '<div class="success">Movie Updated Successfully</div>';
+                        }
+                    }
+                ?>
+            </div>
             <!-- Section -->
             <?php foreach($data['movies'] as $c){ ?>
-            <section class="details" style="margin-top: 100px;">
-                <div class="movie-details">
-                    <div class="cover">
+            <section class="details">
+                <div class="movie-details tst">
+                    <div class="cover tset">
                         <img src="<?= URLROOT . '/public/assets/images/' . $c->movie_cover ?>" alt="name of the movie">
                     </div>
                     <div class="informations">
-                        <h1><?= $c->movie_title ?></h1>
-                        <div class="specific-details">
+                    <h1><?= $c->movie_title ?></h1>
+                        <div class="specific-details"> 
                             <p>Genre :</p>
                             <p><?= $c->movie_type ?></p>
                         </div>
