@@ -23,7 +23,13 @@
                 ?>
             <div class="profile-info">
                 <div class="profile-image">
-                    <img src="<?= URLROOT . '/public/assets/images/' . $data['user']->user_image; ?>" alt="">
+                    <?php
+                        if(empty($data['user']->user_image)){
+                            echo '<img src= ' . URLROOT . '/public/assets/images/Default-Profile-Picture.png alt="Profile Picture">';
+                        } else {
+                            echo '<img src= ' . URLROOT . '/public/assets/images/' . $data['user']->user_image . ' alt="Profile Picture">';
+                        }
+                    ?>
                 </div>
                 <div class="profile-details">
                     <h1><?= $data['user']->user_fname; ?></h1>
