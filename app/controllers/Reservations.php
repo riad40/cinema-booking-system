@@ -7,7 +7,6 @@
             $this->movieModel = $this->model('Movie');
             $this->userModel = $this->model('User');
         }
-        
         public function reserve($id) {            
             // check if user is logged in
             if(!isset($_SESSION['user_id'])) {
