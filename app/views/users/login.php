@@ -10,16 +10,22 @@
     <body>
         <div class="flex justify-center items-center h-screen">
             <div class="login px-7 py-10">
-                <h1 class="block py-4 text-white text-2xl font-400 text-center">Log in</h1>
+                <h1 class="block py-4 text-white text-2xl font-400 text-center">Welcome Back</h1>
+                <div class="text-red-300 text-center font-mono mb-4"><?= $data['errors'] ?></div>
+                <?php
+                    if(isset($_GET['registred'])){
+                        if($_GET['registred'] == 'success'){
+                            echo '<div class="text-green-300 text-center font-mono mb-4">Account Created Successfully Enter Your Credintials To Log In</div>';
+                        }
+                    }
+                ?>
                 <form action="<?php echo URLROOT ?>/users/login" method="post">
 
                     <label for="email" class="font-medium">Enter Your Email</label>
                     <input type="email" name="email" id="email" placeholder="example@gmail.com" class="block mt-4 mb-1 p-3 w-full">
-                    <div id="emailErrors" class="text-red-300 font-mono mb-4"><?php echo $data['email_err'] ?></div>
 
                     <label for="password" class="font-medium">Enter Your Password</label>
                     <input type="password" name="pwd" id="pwd" placeholder="example123" class="block mt-4 mb-1 p-3 w-full">
-                    <div id="pwdErrors" class="text-red-300 font-mono mb-4"><?php echo $data['pwd_err'] ?></div>
 
                     <input type="submit" name="login" value="Sign In" class="block my-5 text-dark font-medium cursor-pointer">
                 </form>

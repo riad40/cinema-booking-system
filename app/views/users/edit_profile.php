@@ -1,13 +1,14 @@
     <?php
         // include header
         include_once '../app/views/includes/header.php';
-        print_r($data);
+        // print_r($data);
     ?>
 
     <!-- Update Your Profile section -->
     <section class="contact-section" id="Contact">
         <h2 class="heading">Update Your Profile</h2>
         <div class="contact-container">
+            <div class="errors"><?= $data['errors'] ?></div>
             <form action="<?php echo URLROOT ?>/users/edit_profile" method="post" enctype="multipart/form-data" >
                 <label for="profile-image">Profile Picture</label>
                 <div class="file-input">

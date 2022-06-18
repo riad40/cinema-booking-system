@@ -11,7 +11,7 @@
     <!-- Link animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <?php
-        if(basename($_SERVER['REQUEST_URI']) == 'profile') {
+        if(basename($_SERVER['REQUEST_URI']) == 'profile' || basename($_SERVER['REQUEST_URI']) == 'profile?updated=success') {
         ?>
             <!-- Tailwind cdn -->
             <script src="https://cdn.tailwindcss.com"></script>

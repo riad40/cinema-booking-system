@@ -14,6 +14,13 @@
     <section>            
         <h2 class="heading">Profile Informations</h2>
         <div class="profile-container">
+                <?php
+                    if(isset($_GET['updated'])) {
+                        if($_GET['updated'] == 'success') {
+                            echo '<div class="success">Profile Updated Successfully</div>';
+                        }
+                    }
+                ?>
             <div class="profile-info">
                 <div class="profile-image">
                     <img src="<?= URLROOT . '/public/assets/images/' . $data['user']->user_image; ?>" alt="">

@@ -24,32 +24,24 @@
                 $data = [
                     'email' => trim($_POST['email']),
                     'pwd' => trim($_POST['pwd']),
-                    'email_err' => '',
-                    'pwd_err' => '',
+                    'errors' => ''
                 ];
 
-                // Validate email
-                if (empty($data['email'])) {
-                    $data['email_err'] = 'Please enter email';
-                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['email_err'] = 'Please enter a valid email';
-                }
-                // Validate password
-                if (empty($data['pwd'])) {
-                    $data['pwd_err'] = 'Please enter password';
-                } elseif (strlen($data['pwd']) < 6) {
-                    $data['pwd_err'] = 'Password must be at least 6 characters';
+                // validate inputs
+                if(empty($data['email']) || empty($data['pwd'])) {
+                    $data['errors'] = 'Please Enter Email and Password';
+                } elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['errors'] = 'Please Enter a Valid Email';
                 }
                 // Make sure errors are empty
-                if (empty($data['email_err']) && empty($data['pwd_err'])) {
-                    // if Validated
+                if (empty($data['errors'])) {
                     // Check and set logged in user
                     $loggedInUser = $this->userModel->login($data['email'], $data['pwd']);
                     if ($loggedInUser) {
                         // Create Session
                         $this->createUserSession($loggedInUser);
                     } else {
-                        $data['pwd_err'] = 'Password incorrect';
+                        $data['errors'] = 'Email or Password are incorrect';
                         $this->view('users/login', $data);
                     }
                 }
@@ -57,8 +49,7 @@
                 $data = [
                     'email' => '',
                     'pwd' => '',
-                    'email_err' => '',
-                    'pwd_err' => ''
+                    'errors' => ''
                 ];
             }
 
@@ -86,11 +77,7 @@
                 'phone' => '',
                 'pwd' => '',
                 'Rpwd' => '',
-                'fname_err' => '',
-                'email_err' => '',
-                'phone_err' => '',
-                'pwd_err' => '',
-                'Rpwd_err' => ''
+                'errors' => ''
             ];
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -104,58 +91,31 @@
                     'phone' => trim($_POST['phone']),
                     'pwd' => trim($_POST['pwd']),
                     'Rpwd' => trim($_POST['Rpwd']),
-                    'fname_err' => '',
-                    'email_err' => '',
-                    'phone_err' => '',
-                    'pwd_err' => '',
-                    'Rpwd_err' => ''
+                    'errors' => '',
+                    'resgitred' => ''
                 ];
 
-                // validate name
-                if(empty($data['fname'])) {
-                    $data['fname_err'] = 'Please enter your full name';
+                // validate inputs
+                if (empty($data['fname']) || empty($data['email']) || empty($data['phone']) || empty($data['pwd']) || empty($data['Rpwd'])) {
+                    $data['errors'] = 'Please fill all fields';
+                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['errors'] = 'Please enter a valid email';
+                } elseif ($this->userModel->findUserByEmail($data['email'])) {
+                    $data['errors'] = 'Email already Taken';
                 }
-                // validate email
-                if(empty($data['email'])) {
-                    $data['email_err'] = 'Please enter your email';
-                }
-                if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['email_err'] = 'Please enter a valid email';
-                }
-                if ($this->userModel->findUserByEmail($data['email']) == true) {
-                    $data['email_err'] = 'Email already exists';
-                }   
-                // validate phone
-                if(empty($data['phone'])) {
-                    $data['phone_err'] = 'Please enter your phone number';
-                }
-                // validate password
-                if(empty($data['pwd'])) {
-                    $data['pwd_err'] = 'Please enter your password';
-                } elseif (strlen($data['pwd']) < 6) {
-                    $data['pwd_err'] = 'Password must be at least 6 characters';
-                }
-                // validate confirm password
-                if(empty($data['Rpwd'])) {
-                    $data['Rpwd_err'] = 'Please confirm your password';
-                } elseif ($data['pwd'] != $data['Rpwd']) {
-                    $data['Rpwd_err'] = 'Passwords do not match';
-                }
-
                 // make sure errors are empty
-                if (empty($data['fname_err']) && empty($data['email_err']) && empty($data['phone_err']) && empty($data['pwd_err']) && empty($data['Rpwd_err'])) {
+                if (empty($data['errors'])) {
                     // hash password
                     $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
                     // register user from model
                     if ($this->userModel->register($data)) {
-                        header('Location: ' . URLROOT . '/users/login');
+                        header('Location: ' . URLROOT . '/users/login?registred=success');
                         // echo('User registered');
                     } else {
                         die('Something went wrong');
                     }
                 }
             } 
-            
             $this->view('users/register', $data);
         }
         public function logout() {
@@ -216,8 +176,7 @@
                 'title' => 'Edit Profile',
                 'user' => $user,
                 'movie_reserved' => $movie_reserved,
-                'errors' => '',
-                'success' => ''
+                'errors' => ''
             ];
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user = $this->userModel->getUserById($_SESSION['user_id']);
@@ -236,8 +195,7 @@
                     'temp_image' => $_FILES['profile-image']['tmp_name'],
                     'folder' => 'C:/Users/Youcode/Desktop/xampp/htdocs/cinema-wave/public/assets/images/' . $_FILES['profile-image']['name'],
                     'id' => $_SESSION['user_id'],
-                    'errors' => '',
-                    'success' => ''
+                    'errors' => ''
                 ];
                 // upload image
                 if (!empty($data['image'])) {
@@ -261,8 +219,7 @@
                     $data['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
                     // register user from model
                     if ($this->userModel->updateUser($data)) {
-                        $data['success'] = 'Your Profile updated successfully';
-                        header('Location: ' . URLROOT . '/users/profile');
+                        header('Location: ' . URLROOT . '/users/profile?updated=success');
                     } else {
                         die('Something went wrong');
                     }
