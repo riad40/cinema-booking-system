@@ -45,13 +45,16 @@
         <div class="contact-container">
             <div class="errors"><?= $data['errors'] ?></div>
             <div class="success"><?= $data['success'] ?></div>
-            <form method="post">
+            <form method="post" id="contact_us">
                 <label for="full-name">Full Name</label>
                 <input type="text" name="fname" id="full-name" name="fname" placeholder="Write Your Full Name">
+                <div id="name_contact_us_errors" class="errors1"></div>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" name="email" placeholder="Write Your Email">
+                <div id="email_contact_us_errors" class="errors1"></div>
                 <label for="message">Message</label>
                 <textarea name="message" id="message" name="message" placeholder="Write Your Message"></textarea>
+                <div id="message_contact_us_errors" class="errors1"></div>
                 <input type="submit" name="submit-contact-us" id="submit-contact-us" value="Submit">
             </form>
         </div>

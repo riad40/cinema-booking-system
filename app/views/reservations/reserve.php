@@ -130,16 +130,20 @@
     <section class="none" id="payment">
         <h2 class="heading">Process Your payment</h2>
         <div class="contact-container">
-            <form action="<?= URLROOT ?>/reservations/reserve/<?= $data['movie']->movie_id ?>" method="post">
+            <form action="<?= URLROOT ?>/reservations/reserve/<?= $data['movie']->movie_id ?>" method="post" id="paymentForm">
                 <input type="hidden" name="seats_reserved" id="booked_seats">
                 <label for="">Card Type</label>
-                <input type="text" name="card_type" placeholder="MasterCard">
+                <input type="text" id="card_type" name="card_type" placeholder="MasterCard">
+                <div id="card_type_errors" class="errors1"></div>
                 <label for="">Card Number</label>
-                <input type="number" name="card_number" placeholder="1234 1234 1234 1234">
+                <input type="number" id="card_number" name="card_number" placeholder="1234 1234 1234 1234">
+                <div id="card_number_errors" class="errors1"></div>
                 <label for="">Expiry Date</label>
-                <input type="date" name="card_date" placeholder="12/2022">
+                <input type="text" id="expiry_date" name="card_date" placeholder="12/2022">
+                <div id="expiry_date_errors" class="errors1"></div>
                 <label for="">CVV</label>
-                <input type="number" name="card_cvv" placeholder="123">
+                <input type="number" id="cvv" name="card_cvv" placeholder="123">
+                <div id="cvv_errors" class="errors1"></div>
                 <input type="submit" value="Get Your Ticket" style="margin-top: 20px;">
             </form>
     </section>

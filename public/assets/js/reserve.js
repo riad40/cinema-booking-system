@@ -37,3 +37,61 @@ continueToPayment.addEventListener('click', () => {
     paymentForm.classList.remove('none')
     paymentForm.classList.add('animate__animated', 'animate__backInLeft')
 })
+
+// payment form validation
+const payment_form = document.querySelector('#paymentForm')
+const card_type = document.querySelector('#card_type')
+const card_number = document.querySelector('#card_number')
+const card_expiry = document.querySelector('#expiry_date')
+const card_cvv = document.querySelector('#cvv')
+const card_type_error = document.querySelector('#card_type_errors')
+const card_number_error = document.querySelector('#card_number_errors')
+const card_expiry_error = document.querySelector('#expiry_date_errors')
+const card_cvv_error = document.querySelector('#cvv_errors')
+
+paymentForm.addEventListener('submit', e => {
+    let errors = 0
+    if (card_type.value == '') {
+        card_type_error.textContent = 'Please enter card type'
+        card_type.style.borderColor = 'red'
+        errors++
+    } else if(card_type.value !== 'visa' || card_type.value !== 'MasterCard'){
+        card_type_error.textContent = 'Card type is not valid'
+        card_type.style.borderColor = 'red'
+        errors++
+    }
+    if (card_number.value == '') {
+        card_number_error.textContent = 'Please enter card number'
+        card_number.style.borderColor = 'red'
+        errors++
+    } else if(card_number.value.length < 16){
+        card_number_error.textContent = 'Card number is not valid'
+        card_number.style.borderColor = 'red'
+        errors++
+    }
+    if (card_expiry.value == '') {
+        card_expiry_error.textContent = 'Please enter expiry date'
+        card_expiry.style.borderColor = 'red'
+        errors++
+    } else if(card_expiry.value.length < 5){
+        card_expiry_error.textContent = 'Expiry date is not valid'
+        card_expiry.style.borderColor = 'red'
+        errors++
+    } else if(!card_expiry.value.includes('/')){
+        card_expiry_error.textContent = 'Expiry date is not valid'
+        card_expiry.style.borderColor = 'red'
+        errors++
+    }
+    if (card_cvv.value == '') {
+        card_cvv_error.textContent = 'Please enter cvv'
+        card_cvv.style.borderColor = 'red'
+        errors++
+    } else if(card_cvv.value.length < 3 || card_cvv.value.length > 3){
+        card_cvv_error.textContent = 'CVV is not valid'
+        card_cvv.style.borderColor = 'red'
+        errors++
+    }
+    if (errors > 0) {
+        e.preventDefault()
+    }
+})

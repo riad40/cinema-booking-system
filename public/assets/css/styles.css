@@ -1006,6 +1006,11 @@ nav .sidebar-button i {
     font-size: 21px;
     text-align: center;
 }
+.errors1 {
+    margin: 5px 0;
+    color: red;
+    font-size: 16px;
+}
 .success {
     color: var(--main-color);
     font-size: 21px;

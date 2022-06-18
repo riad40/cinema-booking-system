@@ -13,21 +13,26 @@
         <div class="login px-7 py-10">
             <h1 class="block py-4 text-white text-2xl font-400 text-center">Register</h1>
             <div class="text-red-300 text-center font-mono my-4"><?= $data['errors'] ?></div>
-            <form action="<?php echo URLROOT ?>/users/register" method="post">
+            <form action="<?php echo URLROOT ?>/users/register" method="post" id="registerForm">
                 <label for="fname" class="font-medium">Enter Your full name</label>
-                <input type="text" name="fname" id="fname" placeholder="Just Your Name" class="block mt-4 mb-1 p-3 w-full">
+                <input type="text" name="fname" id="fname" placeholder="Name" class="block mt-4 mb-1 p-3 w-full">
+                <div id="fnameErrors" class="text-red-300 font-mono my-2"></div>
 
                 <label for="email" class="font-medium">Enter Your Email</label>
                 <input type="email" name="email" id="email" placeholder="example@gmail.com" class="block mt-4 mb-1 p-3 w-full">
+                <div id="emailErrors" class="text-red-300 font-mono my-2"></div>
 
                 <label for="phone" class="font-medium">Enter Your Phone Number</label>
                 <input type="number" name="phone" id="phone" placeholder="+212654-239865" class="block mt-4 mb-1 p-3 w-full">
+                <div id="phoneErrors" class="text-red-300 font-mono my-2"></div>
 
                 <label for="password" class="font-medium">Enter Your Password</label>
                 <input type="password" name="pwd" id="pwd" placeholder="example123" class="block mt-4 mb-1 p-3 w-full">
+                <div id="pwdErrors" class="text-red-300 font-mono my-2"></div>
 
                 <label for="Rpassword" class="font-medium">Confirm Your Password</label>
                 <input type="password" name="Rpwd" id="Rpwd" placeholder="example123" class="block mt-4 mb-1 p-3 w-full">
+                <div id="RpwdErrors" class="text-red-300 font-mono my-2"></div>
 
                 <input type="submit" name="register" value="Sign Up" class="block my-5 text-dark font-medium cursor-pointer">
             </form>
@@ -42,5 +47,6 @@
             </div>
         </div>
     </div>
+    <script src="<?= URLROOT ?>/public/assets/js/register.js"></script>
 </body>
 </html>
