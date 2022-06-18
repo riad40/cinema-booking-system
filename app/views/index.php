@@ -43,13 +43,15 @@
     <section class="contact-section" id="Contact">
         <h2 class="heading">Contact Us</h2>
         <div class="contact-container">
+            <div class="errors"><?= $data['errors'] ?></div>
+            <div class="success"><?= $data['success'] ?></div>
             <form method="post">
                 <label for="full-name">Full Name</label>
-                <input type="text" name="fname" id="full-name" placeholder="Write Your Full Name">
+                <input type="text" name="fname" id="full-name" name="fname" placeholder="Write Your Full Name">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Write Your Email">
+                <input type="email" name="email" id="email" name="email" placeholder="Write Your Email">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" placeholder="Write Your Message"></textarea>
+                <textarea name="message" id="message" name="message" placeholder="Write Your Message"></textarea>
                 <input type="submit" name="submit-contact-us" id="submit-contact-us" value="Submit">
             </form>
         </div>

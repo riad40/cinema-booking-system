@@ -32,11 +32,4 @@
             $row = $this->db->single();
             return $row;
         }
-        // get count all users
-        public function getUserCount() {
-            $this->db->query('SELECT COUNT(*) AS c FROM users');
-            $row = $this->db->single();
-            return $row;
-        }
-        
     }

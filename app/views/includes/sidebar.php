@@ -52,6 +52,12 @@
                         <span class="links_name">Reservations</span>
                     </a>
                 </li>
+                <li>
+                    <a href="contact_us">
+                        <i class='bx bxs-contact'></i>
+                        <span class="links_name">Messages</span>
+                    </a>
+                </li>
                 <li class="log_out">
                     <a href="logout">
                         <i class="bx bx-log-out"></i>

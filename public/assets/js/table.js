@@ -29,6 +29,13 @@ tds.forEach(td => {
         td.classList.add(cls)
     })
 })
+const xcs = document.querySelectorAll('.xc')
+const xcCls = 'text-sm text-gray-200 px-6 py-4'
+xcs.forEach(xc => {
+    xcCls.split(' ').forEach(cls => {
+        xc.classList.add(cls)
+    })
+})
 const tdActions = document.querySelectorAll('.tdLinks')
 const tdActionsCls = 'flex justify-around w-full'
 tdActions.forEach(tdAction => {

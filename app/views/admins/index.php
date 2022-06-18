@@ -38,12 +38,18 @@
             font-size: 15px;
             font-weight: bold;
         }
+        .rr {
+            color: red;
+            margin: 10px;
+            text-align: center;
+        }
     </style>
     </head>
     <body>
         <div class="login-form">
             <form action="" method="post">
-                <h2 class="text-center">Admin Panel</h2>       
+                <h2 class="text-center">Admin Panel</h2>  
+                <div class="rr"><?= $data['errors'] ?></div>     
                 <div class="form-group">
                     <input type="text" class="form-control" name="email" placeholder="email" required="required">
                 </div>

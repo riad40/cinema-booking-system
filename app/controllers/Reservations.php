@@ -68,7 +68,6 @@
                 'movie_reserved' => $movie_reserved,
                 'id' => $id
             ];
-            $id = $movie_reserved->reservation_id;
             $this->view('reservations/generate_ticket', $data);
         }
     }

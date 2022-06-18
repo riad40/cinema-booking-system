@@ -7,6 +7,7 @@
             $this->movieModel = $this->model('Movie');
             $this->userModel = $this->model('User');
             $this->reservationModel = $this->model('Reservation');
+            $this->contactusModel = $this->model('ContactUs');
         }
         
         public function index() {
@@ -15,33 +16,25 @@
                 'title' => 'login',
                 'email' => '',
                 'password' => '',
-                'email_err' => '',
-                'pwd_err' => ''
+                'errors' => ''
             ];
 
             // check for POST
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // process form data
-                // sanitize POST data
+
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 // init data
                 $data = [
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['pwd']),
-                    'email_err' => '',
-                    'password_err' => '',
+                    'errors' => ''
                 ];
-                // validate email
-                if (empty($data['email'])) {
-                    $data['email_err'] = 'Please enter email';
+                // validate data
+                if (empty($data['email']) || empty($data['password'])) {
+                    $data['errors'] = 'Please fill in all fields';
                 }
-                // validate password
-                if (empty($data['password'])) {
-                    $data['password_err'] = 'Please enter password';
-                }
-                // make sure errors are empty
-                if (empty($data['email_err']) && empty($data['password_err'])) {
+                if (empty($data['errors'])) {
                     // check and login
                     $admin = $this->adminModel->login($data['email'], $data['password']);
                     if ($admin) {
@@ -54,15 +47,10 @@
                         // redirect to dashboard
                         header('Location: ' . URLROOT . '/admins/dashboard');
                     } else {
-                        $data['password_err'] = 'Password incorrect';
-                        $this->view('admins/index', $data);
+                        $data['errors'] = 'Password Or Email incorrect';
                     }
-                } else {
-                    // load view with errors
-                    $this->view('admins/index', $data);
                 }
             }
-
             $this->view('admins/index', $data);
         }
 
@@ -76,7 +64,7 @@
                 'page' => 'dashboard',                
                 'admin' => $admin,
             ];
-            $data['user_count'] = $this->adminModel->getUserCount();
+            $data['user_count'] = $this->userModel->getUserCount();
             $data['movie_count'] = $this->movieModel->getMovieCount();
             $data['reservation_count'] = $this->reservationModel->getCountReservations();
             $this->view('admins/dashboard', $data);
@@ -326,6 +314,21 @@
                 }
             }
         }
+        // display all messages
+        public function contact_us() {
+            if (!isset($_SESSION['admin_id'])) {
+                header('Location: ' . URLROOT . '/admins');
+            }
+            $messages = $this->contactusModel->showMessages();
+            $admin = $this->adminModel->getAdminById($_SESSION['admin_id']);
+            $data = [
+                'page' => 'messages',
+                'messages' => $messages,
+                'admin' => $admin,
+            ];
+            $this->view('admins/contact_us', $data);
+        }
+        
         // admin logout
         public function logout() {
             // unset session variables
