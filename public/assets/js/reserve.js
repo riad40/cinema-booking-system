@@ -1,18 +1,20 @@
 // seat validation
+alert('js runing')
+let selectedSeatsValidate = []
 const seats = document.querySelectorAll('.seat-number')
 seats.forEach(seat => {
-    if(selectedSeats.includes(parseInt(seat.textContent))){
+    if (selectedSeats.includes(parseInt(seat.textContent))) {
         // console.log(seat.innerText+ " taken");
         seat.classList.add('reserved')
-    }else{
+    } else {
         // console.log(seat.innerText+' free');
         seat.addEventListener('click', (e) => {
-            let seatNbr=e.target.innerText;            
+            let seatNbr = e.target.innerText         
             e.target.classList.toggle('active');
             if(e.target.classList.contains('active')){
-
                 if(!selectedSeats.includes(seatNbr)){
                     selectedSeats.push(seatNbr)
+                    selectedSeatsValidate.push(seatNbr)
                 }
             }else{
                 if(selectedSeats.includes(seatNbr)){
@@ -34,8 +36,12 @@ const continueToPayment = document.querySelector('#continueToPayment')
 const paymentForm = document.querySelector('#payment')
 
 continueToPayment.addEventListener('click', () => {
-    paymentForm.classList.remove('none')
-    paymentForm.classList.add('animate__animated', 'animate__backInLeft')
+    if(selectedSeatsValidate.length == 0){
+        alert('Please select at least one seat')
+    } else {
+        paymentForm.classList.remove('none')
+        paymentForm.classList.add('animate__animated', 'animate__backInLeft')
+    }
 })
 
 // payment form validation
