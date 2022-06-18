@@ -12,8 +12,10 @@
     <body>
         <div class="sidebar">
             <div class="logo-details">
-                <i class='bx bxs-camera-movie' ></i>
-                <span class="logo_name">CinemaWave</span>
+                <a href="<?= URLROOT ?>">
+                    <i class='bx bxs-camera-movie' ></i>
+                    <span class="logo_name">CinemaWave</span>
+                </a>
             </div>
             <ul class="nav-links">
                 <li>
