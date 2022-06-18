@@ -197,17 +197,14 @@
             ];
             // check for get request
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                
-                $play_date = $movie_reserved->movie_playing_date;
-                $date_now = date('Y-m-d H:i:s');
-                // check if playing date is in the future than delete reservation
-                if ($play_date > $date_now) {
+                try {
                     $this->reservationModel->deleteReservation($id);
                     header('Location: ' . URLROOT . '/users/profile');
-                    echo('Reservation deleted');
-                } else {
-                    echo'<script>alert("Reservation cannot be deleted")</script>';
+                } catch (Exception $e) {
+                    die($e->getMessage());
                 }
+            } else {
+                echo'something went wrong';
             }
         }
         public function edit_profile() {
