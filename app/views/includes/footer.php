@@ -1,4 +1,4 @@
-<footer class="main-footer">
+    <footer class="main-footer">
         <div class="text-footer">
             <div class="text-child-footer">
                 <h1 class="footer-heading">Cinema Wave</h1>
@@ -25,6 +25,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="<?= URLROOT ?>/public/assets/js/swiper.js"></script>
     <script src="<?= URLROOT ?>/public/assets/js/sweetalert.js"></script>
+    <script src="<?= URLROOT ?>/public/assets/js/confirm.js"></script>
 
 </body>
 </html>

@@ -79,7 +79,7 @@
                             </td>
                             <td class="tdLinks">
                                 <a href="../reservations/generate_ticket/<?= $r->reservation_id ?>" class="ediel">Download</a>
-                                <a href="cancelReservation/<?= $r->reservation_id ?>" class="ediel" style="color: red;">Cancel Reservation</a>
+                                <a href="cancelReservation/<?= $r->reservation_id ?>"  class="ediel confirm" style="color: red;" data-confirm-msg="Are you sure you want  to cancel this reservation ?">Cancel Reservation</a>
                             </td>
                         </tr>
                     </tbody>

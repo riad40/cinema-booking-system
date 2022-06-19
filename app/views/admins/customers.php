@@ -47,7 +47,7 @@
                                 <?= $d->user_register ?>
                             </td>
                             <td class="tdLinks">
-                                <a href="delete_user/<?= $d->user_id ?>" class="ediel" style="color: red;">Banne Customer</a>
+                                <a href="delete_user/<?= $d->user_id ?>" class="ediel confirm" style="color: red;" data-confirm-msg="Are you sure you want  to banne this customer ?">Banne Customer</a>
                             </td>
                         </tr>
                     </tbody>
@@ -75,4 +75,6 @@
         </script>
         <script src="<?php echo URLROOT ?>/public/assets/js/table.js"></script>
     </body>
+    <script src="<?= URLROOT ?>/public/assets/js/sweetalert.js"></script>
+    <script src="<?= URLROOT ?>/public/assets/js/confirm.js"></script>
 </html>

@@ -55,7 +55,7 @@
                         </div>
                         <div class="book-ticket" style="padding: 0;">
                             <a href="update_movie/<?= $c->movie_id ?>" class="footer-button">Edit Movie</a>
-                            <a href="delete_movie/<?= $c->movie_id ?>" class="footer-button">Delete Movie</a>
+                            <a href="delete_movie/<?= $c->movie_id ?>" class="footer-button confirm" data-confirm-msg="Are you sure you want  to cancel this movie ?">Delete Movie</a>
                         </div>
                     </div>
                     <div>
@@ -95,4 +95,6 @@
             };
         </script>
     </body>
+    <script src="<?= URLROOT ?>/public/assets/js/sweetalert.js"></script>
+    <script src="<?= URLROOT ?>/public/assets/js/confirm.js"></script>
 </html>
