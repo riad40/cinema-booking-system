@@ -36,10 +36,10 @@ const paymentForm = document.querySelector('#payment')
 
 continueToPayment.addEventListener('click', () => {
     if(selectedSeatsValidate.length == 0){
-        swal({
-            title: "Select At Least One Seat",
-            icon: "error",
-            button: "OK!",
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You must select at least one seat',
         })
     } else {
         paymentForm.classList.remove('none')
