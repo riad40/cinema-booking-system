@@ -37,7 +37,7 @@
                     'movie' => $movie,
                     'errors' => ''
                 ]; 
-                if(!empty($data['seats_reserved'])) {
+                if(!empty($data['seats_reserved']) && preg_match("/^\d+(\,\d+)*$/", $data['seats_reserved'])) {
                     if ($this->reservationModel->addReservation($data)) {
                         try {
                             echo '<script>
@@ -50,7 +50,7 @@
                         die('Something went wrong');
                     }   
                 } else {
-                    $data['errors'] = 'Please select at least one seat';
+                    $data['errors'] = 'Please Choose a valid seats';
                 }
             }
             $this->view('reservations/reserve', $data);

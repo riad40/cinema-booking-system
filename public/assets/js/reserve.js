@@ -1,5 +1,4 @@
 // seat validation
-let selectedSeatsValidate = []
 const seats = document.querySelectorAll('.seat-number')
 seats.forEach(seat => {
     if (selectedSeats.includes(parseInt(seat.textContent))) {
@@ -13,7 +12,6 @@ seats.forEach(seat => {
             if(e.target.classList.contains('active')){
                 if(!selectedSeats.includes(seatNbr)){
                     selectedSeats.push(seatNbr)
-                    selectedSeatsValidate.push(seatNbr)
                 }
             }else{
                 if(selectedSeats.includes(seatNbr)){
@@ -28,6 +26,9 @@ selectedSeats=[];
 function updateSeatsInput(){
     let seatsInputText=selectedSeats.join(',');
     document.getElementById('booked_seats').value=seatsInputText;
+    if(selectedSeats.length==0 && !paymentForm.classList.contains('none')){
+        showPaymentsForm(false);
+    }
 }
 
 // display payment form
@@ -35,17 +36,24 @@ const continueToPayment = document.querySelector('#continueToPayment')
 const paymentForm = document.querySelector('#payment')
 
 continueToPayment.addEventListener('click', () => {
-    if(selectedSeatsValidate.length == 0){
+    if(document.querySelector('#booked_seats').value.length == 0){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'You must select at least one seat',
         })
     } else {
-        paymentForm.classList.remove('none')
+        showPaymentsForm(true);
         paymentForm.classList.add('animate__animated', 'animate__backInLeft')
     }
 })
+function showPaymentsForm(b){
+    if(b){
+        paymentForm.classList.remove('none');
+    }else{
+        paymentForm.classList.add('none');
+    }
+}
 
 // payment form validation
 const payment_form = document.querySelector('#paymentForm')
