@@ -8,26 +8,26 @@ seats.forEach(seat => {
         // console.log(seat.innerText+' free');
         seat.addEventListener('click', (e) => {
             let seatNbr = e.target.innerText         
-            e.target.classList.toggle('active');
+            e.target.classList.toggle('active')
             if(e.target.classList.contains('active')){
                 if(!selectedSeats.includes(seatNbr)){
                     selectedSeats.push(seatNbr)
                 }
             }else{
                 if(selectedSeats.includes(seatNbr)){
-                    selectedSeats.splice(selectedSeats.indexOf(seatNbr),1)
+                    selectedSeats.splice(selectedSeats.indexOf(seatNbr), 1)
                 }
             }
-            updateSeatsInput();
+            updateSeatsInput()
         })
     }
 })
-selectedSeats=[];
+selectedSeats=[]
 function updateSeatsInput(){
-    let seatsInputText=selectedSeats.join(',');
-    document.getElementById('booked_seats').value=seatsInputText;
-    if(selectedSeats.length==0 && !paymentForm.classList.contains('none')){
-        showPaymentsForm(false);
+    let seatsInputText = selectedSeats.join(',');
+    document.getElementById('booked_seats').value = seatsInputText;
+    if(selectedSeats.length == 0 && !paymentForm.classList.contains('none')){
+        showPaymentsForm(false)
     }
 }
 
@@ -49,9 +49,9 @@ continueToPayment.addEventListener('click', () => {
 })
 function showPaymentsForm(b){
     if(b){
-        paymentForm.classList.remove('none');
+        paymentForm.classList.remove('none')
     }else{
-        paymentForm.classList.add('none');
+        paymentForm.classList.add('none')
     }
 }
 
