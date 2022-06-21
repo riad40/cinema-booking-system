@@ -15,7 +15,6 @@
                 'movie' => $movie,
                 'id' => $movie->movie_id
             ];
-            $id = $movie->movie_id;
             $this->view('movies/movie_detail', $data);
         }
 

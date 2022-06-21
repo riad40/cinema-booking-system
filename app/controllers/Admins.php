@@ -277,12 +277,13 @@
                 'movie' => $movie,
                 'id' => $movie->movie_id
             ];
-            $id = $data['id'];
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 if ($this->movieModel->deleteMovie($id)) {
+                    // delete all reservations for this movie
+                    $this->reservationModel->deleteReservationsByMovie($id);
                     echo '<script>
                             window.location.href = "http://localhost/cinema-wave/admins/movies";
-                         </script>';
+                        </script>';
                 } else {
                     die('Something went wrong');
                 }
@@ -295,7 +296,6 @@
                 'user' => $user,
                 'id' => $user->user_id
             ];
-            $id = $data['id'];
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 if ($this->userModel->deleteUser($id)) {
                     // echo 'User deleted';
