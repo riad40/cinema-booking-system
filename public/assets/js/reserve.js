@@ -24,8 +24,8 @@ seats.forEach(seat => {
 })
 selectedSeats=[]
 function updateSeatsInput(){
-    let seatsInputText = selectedSeats.join(',');
-    document.getElementById('booked_seats').value = seatsInputText;
+    let seatsInputText = selectedSeats.join(',')
+    document.getElementById('booked_seats').value = seatsInputText
     if(selectedSeats.length == 0 && !paymentForm.classList.contains('none')){
         showPaymentsForm(false)
     }
